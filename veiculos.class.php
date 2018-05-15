@@ -5,8 +5,8 @@
     	private $ano;
     	private $placa;
     	private $chassi;
-    	private $preco;
-
+		private $preco;
+		
 
     	public function setIdveiculo($idveiculo){
     		$this->idveiculo = $idveiculo;
