@@ -8,7 +8,7 @@
         private $estado_id_estado;
 
         
-        public function __contruct(){
+        public function __construct(){
             
         }
         

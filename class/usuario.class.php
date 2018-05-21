@@ -7,6 +7,10 @@
 		private $sobrenome;
 		private $administrador;
 
+		public function __construct(){
+			
+		}
+
 		public function setIdusuario($idusuario){
 			$this->idusuario = $idusuario;
 		}

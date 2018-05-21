@@ -7,6 +7,9 @@
     	private $chassi;
 		private $preco;
 		
+        public function __construct(){
+            
+        }
 
     	public function setIdveiculo($idveiculo){
     		$this->idveiculo = $idveiculo;

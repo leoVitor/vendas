@@ -6,6 +6,10 @@
         private $nome;
         private $valor;
 
+        public function __construct(){
+            
+        }
+
         public function getId_produto()
         {
             return $this->id_produto;
