@@ -1,4 +1,4 @@
-  <?php
+<?php
     require_once "../class/estado.class.php";
     require_once "../dao/daoestado.class.php";
   ?>
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
               <div class="col s12 center">
-                <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
+                <button id="submit" class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
               </div>
             </div>
             <?php

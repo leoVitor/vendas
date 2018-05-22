@@ -1,4 +1,7 @@
-
+<?php
+  require_once "../dao/cidade.class.php";
+  require_once "../class/cidade.class.php";
+?>
   <!DOCTYPE html>
   <html>
     <head>

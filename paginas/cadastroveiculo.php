@@ -1,6 +1,6 @@
 <?php
-  require_once "../dao/daoproduto.class.php";
-  require_once "../class/produto.class.php";
+  require_once "../class/veiculo.class.php";
+  require_once "../dao/daoveiculo.class.php";
 ?>
   <!DOCTYPE html>
   <html>
@@ -21,12 +21,28 @@
           <form method="POST" class="card-panel">
             <div class="row">
               <div class="col s6 input-field">
-                <input type="text" name="nome" id="nome">
-                <label for="nome">Nome do Produto</label>
+                <input type="text" name="modelo" id="modelo">
+                <label for="modelo">Modelo</label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="valor" id="valor">
-                <label for="valor">Valor do Produto</label>
+                <input type="text" name="ano" id="ano">
+                <label for="valor">Ano do Veiculo</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6 input-field">
+                <input type="text" name="placa" id="placa">
+                <label for="placa">Placa do Veiculo</label>
+              </div>
+              <div class="col s6 input-field">
+                <input type="text" name="chassi" id="chassi">
+                <label for="chassi">Número do Chassi</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 input-field">
+                <input type="text" name="preco" id="preco">
+                <label for="preco">Valor do Veiculo</label>
               </div>
             </div>
             <div class="row">
@@ -36,12 +52,15 @@
             </div>
             <?php
               if (isset($_POST['submit'])) {
-                $produto = new Produto();
-                $produto->setNome($_POST['nome']);
-                $produto->setValor($_POST['valor']);
+                $veiculo = new Veiculo();
+                $veiculo->setModelo($_POST['modelo']);
+                $veiculo->setAno($_POST['ano']);
+                $veiculo->setPlaca($_POST['placa']);
+                $veiculo->setChassi($_POST['chassi']);
+                $veiculo->setPreco($_POST['preco']);
 
-                $dao = new DaoProduto();
-                if($dao->save($produto)){
+                $dao = new DaoVeiculo();
+                if ($dao->save($veiculo)) {
                   echo "<script> alert('Cadastro efetuado')  </script>";
                 }
               }

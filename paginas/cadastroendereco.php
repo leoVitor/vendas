@@ -1,3 +1,7 @@
+  <?php
+    require_once "../class/estado.class.php";
+    require_once "../dao/daoestado.class.php";
+  ?>
   <!DOCTYPE html>
   <html>
     <head>
