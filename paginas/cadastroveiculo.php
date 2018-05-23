@@ -25,8 +25,8 @@
                 <label for="modelo">Modelo</label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="ano" id="ano">
-                <label for="valor">Ano do Veiculo</label>
+                <input type="number" name="ano" id="ano" value="2018">
+                <label for="number">Ano do Veiculo</label>
               </div>
             </div>
             <div class="row">
@@ -58,6 +58,7 @@
                 $veiculo->setPlaca($_POST['placa']);
                 $veiculo->setChassi($_POST['chassi']);
                 $veiculo->setPreco($_POST['preco']);
+
 
                 $dao = new DaoVeiculo();
                 if ($dao->save($veiculo)) {

@@ -7,7 +7,7 @@
 
         public function __construct(){
 
-        }
+        }       
         
         public function getId_estado()
         {

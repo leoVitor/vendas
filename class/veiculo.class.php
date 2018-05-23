@@ -1,6 +1,6 @@
 <?php
     class Veiculo{
-    	private $idveiculo;
+    	private $id_veiculo;
     	private $modelo;
     	private $ano;
     	private $placa;
@@ -11,8 +11,8 @@
             
         }
 
-    	public function setIdveiculo($idveiculo){
-    		$this->idveiculo = $idveiculo;
+    	public function setId_veiculo($id_veiculo){
+    		$this->id_veiculo = $id_veiculo;
     	}
     	public function setModelo($modelo){
     		$this->modelo = $modelo;
@@ -30,8 +30,8 @@
     		$this->preco = $preco;
     	}
     	
-    	public function getIdveiculo(){
-    		return $this->idveiculo;
+    	public function getId_veiculo(){
+    		return $this->id_veiculo;
     	}
     	public function getModelo(){
     		return $this->modelo;
