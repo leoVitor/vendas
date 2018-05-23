@@ -1,6 +1,8 @@
 <?php
-  require_once "../dao/cidade.class.php";
+  require_once "../dao/daocidade.class.php";
   require_once "../class/cidade.class.php";
+  require_once "../dao/daoestado.class.php";
+  require_once "../class/estado.class.php";
 ?>
   <!DOCTYPE html>
   <html>
@@ -32,13 +34,21 @@
             </div>
             <div class="row">
               <div class="col s12">
-                <select>
-                  <option value="" disabled selected>Selecione o Estado</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-                <label>Selecione o Estado</label>
+                <?php
+                 echo "<select>";
+                 echo "<option value='' disabled selected>Selecione o Estado</option>";
+                 $daoestado = new DaoEstado();
+                $estados = $daoestado->getAll();
+                
+                if($estados != null)
+                  foreach ($estados as $key => $estado) {
+                    echo "<option value='{$estado->getId_estado()}'>{$estado->getNome()}</option>";
+                  }
+                 
+                 else echo "null";
+                echo "</select>";
+                echo "<label>Estados</label>"
+                ?>
               </div>
             </div>
             <div class="row">
@@ -46,7 +56,19 @@
                 <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
               </div>
             </div>
+            <?php
+              if (isset($_POST['submit'])) {
+                $cidade = new Cidade();
+                $cidade->getNome($_POST['nome']);
+                $cidade->getSigla($_POST['sigla']);
+                $cidade->getEstado($_POST['estado']);
 
+                $dao =new DaoCidade();
+                if($dao->save($cidade)){
+                  echo "<script> alert('Cadastro efetuado')  </script>";
+                }
+              }
+            ?>
           </form>
         </div>
       </div>
