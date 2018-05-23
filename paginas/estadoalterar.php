@@ -46,7 +46,7 @@
                 $estado->setUf($_POST['uf']);
                 $dao = new DaoEstado();
                 if($dao->update($estado)){
-                    echo "<script>alert('Alterado com sucesso')</script>";
+                    echo "<script>alert('Alterado com sucesso'); window.location.href='estadoconsulta.php';</script>";
                 }          
             }
             ?>

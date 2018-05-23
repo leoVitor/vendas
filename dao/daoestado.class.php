@@ -62,6 +62,34 @@
 		}
 		public static function update($estado){
             $resultado = FALSE;
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
+			$sql = "UPDATE `estado` SET `nome`='".$estado->getNome()."',`uf`='".$estado->getUf()."' WHERE `idestado`= ".$estado->getId_estado();
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+        }
+        public static function delete($id){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql ="DELETE FROM `estado` WHERE `idestado`= ".$id;
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
+            }
+            $con->close();
+            return $resultado;
+        }
+	}
+?>
+
+<!--
+    public static function update($estado){
+            $resultado = FALSE;
             $con  = Conexao::getConnection();
 			$sql = "UPDATE `estado` SET `nome`='".$estado->getNome()."',`uf`='".$estado->getUf()."' WHERE `idestado`= ".$estado->getId_estado();
             if($con->query($sql)==TRUE){
@@ -72,5 +100,4 @@
             $con->close();
             return $resultado;
         }
-	}
-?>
+-->
