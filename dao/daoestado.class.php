@@ -86,18 +86,3 @@
         }
 	}
 ?>
-
-<!--
-    public static function update($estado){
-            $resultado = FALSE;
-            $con  = Conexao::getConnection();
-			$sql = "UPDATE `estado` SET `nome`='".$estado->getNome()."',`uf`='".$estado->getUf()."' WHERE `idestado`= ".$estado->getId_estado();
-            if($con->query($sql)==TRUE){
-                $resultado = TRUE;
-            }else{
-                echo "ERRO ".$con->error;
-            }
-            $con->close();
-            return $resultado;
-        }
--->

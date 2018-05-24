@@ -1,10 +1,17 @@
-<?php
-  require_once "../dao/daocidade.class.php";
-  require_once "../class/cidade.class.php";
-  require_once "../dao/daoestado.class.php";
-  require_once "../class/estado.class.php";
+<?php 
+    require_once "../class/estado.class.php";
+    require_once "../class/cidade.class.php";
+    require_once "../dao/daoestado.class.php";
+    require_once "../dao/daocidade.class.php";
+
+   $cidade = NULL;
+   if(isset($_GET['id_cidade'])){
+       $id = $_GET['id_cidade'];
+       $dao = new DaoCidade();
+       $cidade = $dao->buscar($id);
+   }
 ?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
     <head>
       <!--Import Google Icon Font-->
@@ -14,30 +21,29 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta charset="utf-8">
-      <title>Cadastro de Cidade</title>
+      <title>Alterar Dados</title>
     </head>
 
     <body>
-      <div class="row">
-        <div class="col s6 offset-s3">
-          <form method="POST" class="card-panel">
+    <div class="row">
+        <div class="col s12">
+          <form  method="post">
             <div class="row">
               <div class="col s6 input-field">
                 <input type="text" name="nome" id="nome">
                 <label for="nome">Nome da Cidade</label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="sigla" id="sigla">
+                <input type="text" name="sigla" id="sigla" >
                 <label for="sigla">Sigla</label>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
                 <?php
-                 echo "<select name='estado' id='estado' required>";
-                 echo "<option value='' disabled selected>Selecione o Estado</option>";
-                 $daoestado = new DaoEstado();
+                echo "<select name='estado' id='estado' required>";
+                echo "<option value='' disabled selected>Selecione o Estado</option>";
+                $daoestado = new DaoEstado();
                 $estados = $daoestado->getAll();
                 
                 if($estados != null)
@@ -45,9 +51,9 @@
                     echo "<option value='{$estado->getId_estado()}'>{$estado->getNome()}</option>";
                   }
                  
-                 else echo "null";
-                echo "</select>";
-                echo "<label>Estados</label>"
+                else echo "null";
+                  echo "</select>";
+                  echo "<label>Estados</label>"
                 ?>
               </div>
             </div>
@@ -57,29 +63,20 @@
               </div>
             </div>
             <?php
-              if (isset($_POST['submit'])) {
-                $cidade = new Cidade();
-                $cidade->setNome($_POST['nome']);
-                $cidade->setSigla($_POST['sigla']);
-                $cidade->setEstado_id_estado($_POST['estado']);
-                
-                $dao =new DaoCidade();
-                if($dao->save($cidade)){
-                  
-                  echo "<script> alert('Cadastro efetuado')  </script>";
-                }
-              }
+            /*if(isset($_POST['submit'])){
+                $estado->setNome($_POST['nome']);
+                $estado->setUf($_POST['uf']);
+                $dao = new DaoEstado();
+                if($dao->update($estado)){
+                    echo "<script>alert('Alterado com sucesso'); window.location.href='estadoconsulta.php';</script>";
+                }          
+            }*/
             ?>
           </form>
         </div>
-      </div>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    </div>
+      <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function() {
-          $('select').material_select();
-        });
-      </script>
     </body>
   </html>
+        
