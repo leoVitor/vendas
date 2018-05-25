@@ -67,8 +67,7 @@
             $resultado = FALSE;
             $conexao = new Conexao();
             $con  = $conexao->connection();
-            $sql = "UPDATE `cidade` SET `nome`='".$cidade->getNome()."',`sigla`='".$cidade->getSigla()."',`estado_idestado`='".$cidade->getEstado_id_estado()."'
-            WHERE `idcidade`=".$cidade->getId_Cidade();
+            $sql = "UPDATE `cidade` SET `nome`='".$cidade->getNome()."',`sigla`='".$cidade->getSigla()."',`estado_idestado`='".$cidade->getEstado_id_estado()."' WHERE `idcidade`=".$cidade->getId_Cidade();
             if($con->query($sql)==TRUE){
                 $resultado = TRUE;
             }else{
