@@ -1,6 +1,9 @@
   <?php
     require_once "../class/estado.class.php";
     require_once "../dao/daoestado.class.php";
+    require_once "../class/cidade.class.php";
+    require_once "../dao/daocidade.class.php";
+    require_once "../con/conexao.class.php";
   ?>
   <!DOCTYPE html>
   <html>
@@ -42,11 +45,21 @@
             </div>
             <div class="row">
               <div class="col s12">
-                <select>
-                  <option value="" disabled selected>Selecione a Cidade</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+                <select name="cidade" required>
+                  <option value="0" selected>Selecione a Cidade</option>
+                  <?php
+                    $dao = new DaoCidade();
+                    $resultado = $dao->getAll();
+                    if($resultado != null){
+                      foreach($resultado as $key => $value){
+                        echo "<option value='{$value->getId_cidade()}'>" . $value->getNome() . " - " ./* $value->geUf() .*/ "</option>";
+                      
+                        //FALTA FAZER BUSCA DA SIGLA DO ESTADO... NAO CONSEGUI, NAO APARECE SELECT
+
+                      }
+                    }
+                    
+                  ?>
                 </select>
               </div>
             </div>

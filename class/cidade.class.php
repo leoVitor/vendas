@@ -6,6 +6,7 @@
         private $nome;
         private $sigla;
         private $estado_id_estado;
+        private $uf;
 
         
         public function __construct(){
@@ -48,6 +49,14 @@
             $this->estado_id_estado = $estado_id_estado;
         }
 
+        /*public function getUf()
+        {
+            return $this->uf;
+        }
+        public function setUf($uf)
+        {
+            $this->uf = $uf;
+        }*/
     }
 
 ?>
