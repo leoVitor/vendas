@@ -19,6 +19,57 @@
 			$con->close();
 
 			return true;
-        } 
+        }
+        public function getAll(){
+            $retorno = NULL;
+            $conexao = new Conexao(); 
+            $sql = "SELECT `e`.`idendereco`, `e`.`logradouro`, `e`.`cep`, `e`.`numero`, `e`.`complemento`, `c`.`nome` 
+            AS `cidade` FROM `endereco` AS `e` INNER JOIN `cidade` AS `c` ON `c` . `idcidade` = 
+            `e`.`cidade_idcidade`ORDER BY `c`.`nome` ASC";
+            $con = $conexao->connection();
+            $result = $con->query($sql);
+            if($result->num_rows > 0){
+                $retorno = array();
+                while($row = $result->fetch_assoc()){
+                    $endereco = new Endereco();
+                    $endereco->setId_Endereco($row['idendereco']);
+                    $endereco->setLogradouro($row['logradouro']);
+                    $endereco->setCep($row['cep']);
+                    $endereco->setNumero($row['numero']);
+                    $endereco->setComplemento($row['complemento']);
+                    $endereco->setCidade_Id_Cidade($row['cidade']);
+
+                    array_push($retorno,$endereco);
+                }
+            }
+            $con->close();
+            return $retorno;
+        }
+        public function buscar($id){
+            $conexao = new Conexao();
+            $endereco = NULL;
+            $con = $conexao->connection();
+            $sql = "SELECT `idendereco`, `logradouro`, `cep`, `numero`, `complemento`, `cidade_idcidade` FROM `endereco` WHERE `idendereco`= {$id}";
+            $result = $con->query($sql);
+        
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $endereco = new Endereco();
+                    $id = $row['idendereco'];
+                    $logradouro = $row['logradouro'];
+                    $cep = $row['cep'];
+                    $numero = $row['numero'];
+                    $complemento = $row['complemento'];
+                    $cidade_id_cidade = $row['cidade_idcidade'];
+
+                    $endereco->setId_Endereco($id);
+                    $endereco->setLogradouro($logradouro);
+                    $endereco->setCep($cep);
+                    $endereco->setNumero($numero);
+                    $endereco->setComplemento($complemento);
+                    $cidade_id_cidade->setCidade_Id_Cidade($cidade_id_cidade);
+                }
+            }
+        }
     }
 ?>

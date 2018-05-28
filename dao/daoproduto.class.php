@@ -48,7 +48,7 @@
                     $produto = new Produto();
 					$id = $row['idproduto'];
 					$nome = $row['nome'];
-					$uf = $row['valor'];
+					$valor = $row['valor'];
     
                     $produto->setNome($nome);
                     $produto->setValor($uf);

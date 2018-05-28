@@ -15,7 +15,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="utf-8">
-      <title>Cadastro de Endereço</title>
+      <title>Cadastro de Dados</title>
     </head>
 
     <body>
@@ -74,6 +74,7 @@
                 $endereco->setNumero($_POST['numero']);
                 $endereco->setComplemento($_POST['complemento']);
                 $endereco->setCidade_Id_Cidade($_POST['cidade']);
+              
                 
                 $dao = new DaoEndereco();
                 if($dao->save($endereco)){
