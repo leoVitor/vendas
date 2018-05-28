@@ -8,7 +8,6 @@
 			$sql = "INSERT INTO `cidade`(`nome`, `sigla`, `estado_idestado`) VALUES (?,?,?)";
 			$stmt = $con->prepare($sql);
             $stmt->bind_param('ssi',$nome,$sigla,$estado_idestado);
-            
 			$nome = $cidade->getNome();
             $sigla = $cidade->getSigla();
 			$estado_idestado = $cidade->getEstado_id_estado();
@@ -67,7 +66,8 @@
             $resultado = FALSE;
             $conexao = new Conexao();
             $con  = $conexao->connection();
-            $sql = "UPDATE `cidade` SET `nome`='".$cidade->getNome()."',`sigla`='".$cidade->getSigla()."',`estado_idestado`='".$cidade->getEstado_id_estado()."' WHERE `idcidade`=".$cidade->getId_Cidade();
+            $sql = "UPDATE `cidade` SET `nome`='".$cidade->getNome()."',`sigla`='".$cidade->getSigla()."
+            ',`estado_idestado`='".$cidade->getEstado_id_estado()."' WHERE `idcidade`=".$cidade->getId_Cidade();
             if($con->query($sql)==TRUE){
                 $resultado = TRUE;
             }else{

@@ -58,6 +58,7 @@
                 $veiculo->setPlaca($_POST['placa']);
                 $veiculo->setChassi($_POST['chassi']);
                 $veiculo->setPreco($_POST['preco']);
+                var_dump($veiculo);
 
 
                 $dao = new DaoVeiculo();

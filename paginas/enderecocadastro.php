@@ -1,6 +1,8 @@
   <?php
-    require_once "../class/estado.class.php";
-    require_once "../dao/daoestado.class.php";
+    require_once "../class/cidade.class.php";
+    require_once "../dao/daocidade.class.php";
+    require_once "../class/endereco.class.php";
+    require_once "../dao/daoendereco.class.php";
   ?>
   <!DOCTYPE html>
   <html>
@@ -13,7 +15,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="utf-8">
-      <title>Cadastro de Usuario</title>
+      <title>Cadastro de Endereço</title>
     </head>
 
     <body>
@@ -42,14 +44,44 @@
             </div>
             <div class="row">
               <div class="col s12">
-                <select>
-                  <option value="" disabled selected>Selecione a Cidade</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
+                <?php
+                  echo "<select name='cidade' id='cidade' required>";
+                  echo "<option value='' disabled selected>Selecione a cidade</option>";
+                  $daocidade = new DaoCidade();
+                  $cidades = $daocidade->getAll();
+                  
+                  if($cidades != null)
+                    foreach ($cidades as $key => $cidade) {
+                      echo "<option value='{$cidade->getId_Cidade()}'>{$cidade->getNome()}</option>";
+                    }
+                  
+                  else echo "null";
+                  echo "</select>";
+                  echo "<label>Cicades</label>"
+                ?>
               </div>
             </div>
+            <div class="row">
+              <div class="col s12 center">
+                <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
+              </div>
+            </div>
+            <?php
+              if(isset($_POST['submit'])){
+                $endereco = New Endereco();
+                $endereco->setLogradouro($_POST['logradouro']);
+                $endereco->setCep($_POST['cep']);
+                $endereco->setNumero($_POST['numero']);
+                $endereco->setComplemento($_POST['complemento']);
+                $endereco->setCidade_Id_Cidade($_POST['cidade']);
+                var_dump($endereco);
+                
+                $dao = new DaoEndereco();
+                if($dao->save($endereco)){
+                  echo "<script> alert('Cadastro efetuado')  </script>";
+                }
+              }
+            ?>
           </form>
         </div>
       </div>
