@@ -89,8 +89,8 @@
                  
                  else echo "null";
                 echo "</select>";
-                echo "<label>Veiculo</label>"
-                */?>
+                echo "<label>Veiculo</label>"*/
+                ?>
               </div>
             </div>
             -->
