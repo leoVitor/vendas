@@ -46,18 +46,18 @@
               <div class="col s12">
                 <?php
                   echo "<select name='cidade' id='cidade' required>";
-                  echo "<option value='' disabled selected>Selecione a cidade</option>";
+                  echo "<option value='' disabled selected>Selecione a Cidade</option>";
                   $daocidade = new DaoCidade();
-                  $cidades = $daocidade->getAll();
+                  $buscacidade = $daocidade->getAll();
                   
-                  if($cidades != null)
-                    foreach ($cidades as $key => $cidade) {
+                  if($buscacidade != null)
+                    foreach ($buscacidade as $key => $cidade) {
                       echo "<option value='{$cidade->getId_Cidade()}'>{$cidade->getNome()}</option>";
                     }
                   
                   else echo "null";
                   echo "</select>";
-                  echo "<label>Cicades</label>"
+                  echo "<label>Cidade</label>"
                 ?>
               </div>
             </div>
@@ -74,7 +74,6 @@
                 $endereco->setNumero($_POST['numero']);
                 $endereco->setComplemento($_POST['complemento']);
                 $endereco->setCidade_Id_Cidade($_POST['cidade']);
-                var_dump($endereco);
                 
                 $dao = new DaoEndereco();
                 if($dao->save($endereco)){

@@ -35,9 +35,9 @@
             <div class="row">
               <div class="col s12">
                 <?php
-                 echo "<select name='estado' id='estado' required>";
-                 echo "<option value='' disabled selected>Selecione o Estado</option>";
-                 $daoestado = new DaoEstado();
+                echo "<select name='estado' id='estado' required>";
+                echo "<option value='' disabled selected>Selecione o Estado</option>";
+                $daoestado = new DaoEstado();
                 $estados = $daoestado->getAll();
                 
                 if($estados != null)

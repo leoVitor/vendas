@@ -21,8 +21,8 @@
         public function getAll(){
             $retorno = NULL;
             $conexao = new Conexao();
-            $sql = "SELECT `c`.`idcidade`, `c`.`nome`,`c`.`sigla`, `e`.`nome` AS `estado` 
-                    FROM `cidade` AS `c`INNER JOIN `estado` AS `e` 
+            $sql = "SELECT `c`.`idcidade`, `c`.`nome`,`c`.`sigla`, `e`.`nome` AS `estado`, `e`.`uf` AS `uf` 
+                    FROM `cidade` AS `c` INNER JOIN `estado` AS `e` 
                     ON `e`.`idestado` = `c`.`estado_idestado` ORDER BY `c`.`nome` ASC";
             $con = $conexao->connection();
             $result = $con->query($sql);
@@ -34,6 +34,7 @@
                     $cidade->setNome($row['nome']);
                     $cidade->setSigla($row['sigla']);
                     $cidade->setEstado_id_estado($row['estado']);
+                    //$cidade->setUf($row['uf']);
                     array_push($retorno,$cidade);
                 }
             }
