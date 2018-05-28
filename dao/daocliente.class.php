@@ -1,7 +1,7 @@
 <?php
 	require_once "../class/cliente.class.php";
 	require_once "../con/conexao.class.php";
-	class DaoVeiculo{
+	class DaoCliente{
 		public static function save($cliente){
 			$conexao = New Conexao();
 			$sql = "INSERT INTO `cliente`(`nome`, `cpf`, `nascimento`, `rg`, `telefone`, `email`, `endereco_idendereco`, `veiculo_idveiculo`) 
