@@ -9,7 +9,7 @@
 			$stmt = $con->prepare($sql);
 			$stmt->bind_param('ss',$nome,$valor);
 			$nome = $produto->getNome();
-			$uf = $produto->getValor();
+			$valor = $produto->getValor();
 			$stmt->execute();
 
 			$stmt->close();

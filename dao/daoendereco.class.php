@@ -21,12 +21,12 @@
 			return true;
         }
         public function getAll(){
-            $retorno = NULL;
             $conexao = new Conexao(); 
+            $endereco = NULL;
+            $con = $conexao->connection();
             $sql = "SELECT `e`.`idendereco`, `e`.`logradouro`, `e`.`cep`, `e`.`numero`, `e`.`complemento`, `c`.`nome` 
             AS `cidade` FROM `endereco` AS `e` INNER JOIN `cidade` AS `c` ON `c` . `idcidade` = 
             `e`.`cidade_idcidade`ORDER BY `c`.`nome` ASC";
-            $con = $conexao->connection();
             $result = $con->query($sql);
             if($result->num_rows > 0){
                 $retorno = array();
