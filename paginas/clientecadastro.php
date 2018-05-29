@@ -36,8 +36,8 @@
             </div>
             <div class="row">
               <div class="col s6 input-field">
-                <input type="text" name="nascimento" id="nascimento">
-                <label for="nascimento">nascimento</label>
+                <input type="date" name="nascimento" id="nascimento">
+                <!--<label for="nascimento">nascimento</label>-->
               </div>
               <div class="col s6 input-field">
                 <input type="text" name="rg" id="rg">
@@ -58,7 +58,7 @@
               <div class="col s12">
                 <?php
                 echo "<select name='endereco' id='endereco' required>";
-                echo "<option value='' disabled selected>Selecione o Endereço</option>";
+                echo "<option value='' disabled selected>Endereço</option>";
                 $daoendereco = new DaoEndereco();
                 $buscaendereco = $daoendereco->getAll();
                 
@@ -73,32 +73,49 @@
                 ?>
               </div>
             </div>
-            <!--
             <div class="row">
               <div class="col s12">
-                <?php
-                /*echo "<select name='veiculo' id='veiculo' required>";
-                echo "<option value='' disabled selected>Selecione o Veiculo</option>";
-                $daveiculo = new DaoVeiculo();
-                $buscaveiculo = $buscaveiculo->getAll();
+              <?php
+                echo "<select name='veiculo' id='veiculo' required>";
+                echo "<option value='' disabled selected>Modelo do Veículo</option>";
+                $daoveiculo = new DaoVeiculo();
+                $buscaveiculo = $daoveiculo->getAll();
                 
                 if($buscaveiculo != null)
                   foreach ($buscaveiculo as $key => $veiculo) {
-                    echo "<option value='{$veiculo->getId_Veiculo()}'>{$veiculo->getNome()}</option>";
+                    echo "<option value='{$veiculo->getId_Veiculo()}'>{$veiculo->getModelo()}</option>";
                   }
                  
                  else echo "null";
                 echo "</select>";
-                echo "<label>Veiculo</label>"*/
+                echo "<label>Veiculo</label>"
                 ?>
               </div>
             </div>
-            -->
             <div class="row">
               <div class="col s12 center">
                 <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
               </div>
             </div>
+            <?php
+              if(isset($_POST['submit'])){
+                $cliente = new Cliente();
+                $cliente->setNome($_POST['nome']);
+                $cliente->setCpf($_POST['cpf']);
+                $cliente->setNascimento($_POST['nascimento']);
+                $cliente->setRg($_POST['rg']);
+                $cliente->setTelefone($_POST['telefone']);
+                $cliente->setEmail($_POST['email']);
+                $cliente->setEndereco_Id_Endereco($_POST['endereco']);
+                $cliente->setVeiculo_Id_Veiculo($_POST['veiculo']);
+                var_dump($cliente);
+
+                $dao = new DaoCliente();
+                if($dao->save($cliente)){
+                  echo "<script> alert('Cadastro efetuado')  </script>";
+                }
+              }
+            ?>
           </form>
         </div>
       </div>
