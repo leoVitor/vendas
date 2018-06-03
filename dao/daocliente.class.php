@@ -20,5 +20,30 @@
 			$stmt->close();
 			$con->close();
 		}
+	
+		public function getAll(){
+			$retorno = NULL;
+			$conexao = new Conexao();
+			$sql = "SELECT `c`.`idcliente`, `c`.`nome`, `c`.`cpf`, `c`.`nascimento`, `c`.`rg`, `c`.`telefone`, `c`.`email`, `e`.`logradouro` AS `endereco`, `v`.`modelo` AS `modelo` FROM `cliente` as `c` INNER JOIN `endereco` AS `e` ON `e`.`idendereco` = `c`.`endereco_idendereco` INNER JOIN `veiculo` AS `v` ON `v`.`idveiculo` = `c`.`veiculo_idveiculo` ORDER BY `c`.`nome` ASC";
+			$con = $conexao->connection();
+			$result = $con->query($sql);
+			if($result->num_rows > 0){
+				$retorno = array();
+				while($row = $result->fetch_assoc()){
+					$cliente = new Cliente();
+					$cliente->setId_Cliente($row['idcliente']);
+					$cliente->setNome($row['nome']);
+					$cliente->setCpf($row['cpf']);
+					$cliente->setRg($row['rg']);
+					$cliente->setTelefone($row['telefone']);
+					$cliente->setEmail($row['email']);
+					$cliente->setEndereco_Id_Endereco($row['endereco']);
+					$cliente->setVeiculo_Id_Veiculo($row['modelo']);
+					array_push($retorno,$cliente);
+				}
+			}
+			$con->close();
+			return $retorno;
+		}
 	}
 ?>

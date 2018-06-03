@@ -108,11 +108,12 @@
                 $cliente->setEmail($_POST['email']);
                 $cliente->setEndereco_Id_Endereco($_POST['endereco']);
                 $cliente->setVeiculo_Id_Veiculo($_POST['veiculo']);
-                var_dump($cliente);
+               
 
                 $dao = new DaoCliente();
                 if($dao->save($cliente)){
                   echo "<script> alert('Cadastro efetuado')  </script>";
+                  
                 }
               }
             ?>

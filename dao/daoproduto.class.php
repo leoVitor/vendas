@@ -51,7 +51,7 @@
 					$valor = $row['valor'];
     
                     $produto->setNome($nome);
-                    $produto->setValor($uf);
+                    $produto->setValor($valor);
                     $produto->setId_Produto($id);
     
                 }
@@ -70,6 +70,18 @@
             }
             $con->close();
             return $resultado;
-		}
+        }
+        public static function alterar($produto){
+            $resultado = FALSE;
+            $con  = Conexao::getConnection();
+            $sql = "UPDATE `produto` SET `nome`='".$produto->getNome()."',`valor`='".$produto->getValor()."' WHERE `idproduto` = ".$produto->getId_Produto(); 
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+        }
 	}
 ?>
