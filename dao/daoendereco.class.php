@@ -3,22 +3,35 @@
     require_once "../class/endereco.class.php";
     class DaoEndereco{
         public static function save($endereco){
-            $conexao = New Conexao();
+            $res = true;
+            try{
+            $conexao = new Conexao();
 			$con = $conexao->connection();
 			$sql = "INSERT INTO `endereco`(`logradouro`, `cep`, `numero`, `complemento`, `cidade_idcidade`) VALUES (?,?,?,?,?)";
 			$stmt = $con->prepare($sql);
-			$stmt->bind_param('ssssi',$logradouro,$cep,$numero,$complemento,$cidade_id_cidade);
+			$stmt->bind_param('ssssi',$logradouro,$cep,$numero,$complemento,$cidade_idcidade);
 			$logradouro = $endereco->getLogradouro();
             $cep = $endereco->getCep();
             $numero = $endereco->getNumero();
             $complemento = $endereco->getComplemento();
-            $cidade_id_cidade = $endereco->getCidade_Id_Cidade();
-			$stmt->execute();
-
-			$stmt->close();
-			$con->close();
-
-			return true;
+            $cidade_idcidade = $endereco->getCidade_Id_Cidade();
+    
+           $stmt->execute();
+           // var_dump($endereco);
+            
+            
+            }catch(Exception $e){
+                $res = false;
+                echo $e->getMessage();
+                
+            }finally{
+             //   var_dump($stmt);
+              //  var_dump($endereco);
+                $stmt->close();
+                $con->close();
+    
+            }
+			return $res;
         }
         public function getAll(){
             $conexao = new Conexao(); 

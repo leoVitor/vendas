@@ -20,7 +20,7 @@
 		public function getAll(){
             $retorno = NULL;
             $conexao = new Conexao(); 
-            $sql = "SELECT `idproduto`, `nome`, `valor` FROM `produto` ORDER BY `idproduto` ASC";
+            $sql = "SELECT * FROM `produto` WHERE 1SELECT `idproduto`, `nome`, `valor` FROM `produto` ORDER BY `idproduto` ASC";
             $con = $conexao->connection();
             $result = $con->query($sql);
             if($result->num_rows > 0){

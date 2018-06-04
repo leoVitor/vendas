@@ -27,7 +27,7 @@
           <form method="POST" class="card-panel">
             <div class="row">
               <div class="col s6 input-field">
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="nome" id="nome" >
                 <label for="nome">Nome do Produto</label>
               </div>
               <div class="col s6 input-field">
@@ -37,15 +37,15 @@
             </div>
             <div class="row">
               <div class="col s12 center">
-                <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
+                <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Alterar</button>
               </div>
             </div>
             <?php
                 if(isset($_POST['submit'])){
                     $produto->setNome($_POST['nome']);
-                    $peoduto->setValor($_POST['valor']);
+                    $produto->setValor($_POST['valor']);
 
-                    if(DaoCliente::update($produto)){
+                    if(DaoProduto::alterar($produto)){
                         echo "<script> alert ( 'Alterado com sucesso' ) </script>";
                     }  
                 }

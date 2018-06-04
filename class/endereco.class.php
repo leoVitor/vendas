@@ -44,10 +44,10 @@
         	return $this->numero;
         }
         public function getComplemento(){
-        	$this->complemento;
+        	return $this->complemento;
         }
         public function getCidade_Id_Cidade(){
-        	$this->cidade_id_cidade;
+        	return $this->cidade_id_cidade;
         }
     }
 

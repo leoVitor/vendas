@@ -74,6 +74,7 @@
                 $endereco->setNumero($_POST['numero']);
                 $endereco->setComplemento($_POST['complemento']);
                 $endereco->setCidade_Id_Cidade($_POST['cidade']);
+                //var_dump($endereco);
               
                 
                 $dao = new DaoEndereco();
