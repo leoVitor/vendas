@@ -52,7 +52,7 @@
                   
                   if($buscacidade != null)
                     foreach ($buscacidade as $key => $cidade) {
-                      echo "<option value='{$cidade->getId_Cidade()}'>{$cidade->getNome()}</option>";
+                      echo "<option value='{$cidade->getId_Cidade()}'>{$cidade->getNome()} - {$cidade->getEstado_id_estado()}</option>";
                     }
                   
                   else echo "null";

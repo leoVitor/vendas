@@ -33,8 +33,7 @@
                     $cidade->setId_cidade($row['idcidade']);
                     $cidade->setNome($row['nome']);
                     $cidade->setSigla($row['sigla']);
-                    $cidade->setEstado_id_estado($row['estado']);
-                    //$cidade->setUf($row['uf']);
+                    $cidade->setEstado_id_estado($row['uf']);
                     array_push($retorno,$cidade);
                 }
             }
