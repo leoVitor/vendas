@@ -115,6 +115,17 @@
                   echo "<script> alert('Cadastro efetuado')  </script>";
                   
                 }
+
+                /*$conexao = new Conexao();
+                $con = $conexao->connection();
+                $sql = "INSERT INTO `cliente`(`nome`, `cpf`, `nascimento`, `rg`, `telefone`, `email`, `endereco_idendereco`, `veiculo_idveiculo`) VALUES ('".$_POST['nome']."', '".$_POST['cpf']."', '".$_POST['nascimento']."', '".$_POST['rg']."', '".$_POST['telefone']."', '".$_POST['email']."', '".$_POST['endereco']."', '".$_POST['veiculo']."')";
+                if(mysqli_query($con,$sql)){
+                  echo "<script> alert('Cadastrado com sucesso') </script>";
+                }else{
+                    echo "ERRO ".mysqli_error($con);
+                }
+                mysqli_close($con);*/
+
               }
             ?>
           </form>

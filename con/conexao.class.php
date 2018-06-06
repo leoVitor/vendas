@@ -1,8 +1,8 @@
 <?php 
     class Conexao{
         private $servername="localhost";
-        private $username="vitor";
-        private $password="vitor";
+        private $username="root";
+        private $password="freestep";
         private $database="mydb";
 
         public function connection(){

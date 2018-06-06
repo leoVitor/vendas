@@ -20,14 +20,14 @@
 		public function getAll(){
             $retorno = NULL;
             $conexao = new Conexao(); 
-            $sql = "SELECT * FROM `produto` WHERE 1SELECT `idproduto`, `nome`, `valor` FROM `produto` ORDER BY `idproduto` ASC";
+            $sql = "SELECT `idproduto`, `nome`, `valor`  FROM `produto` ORDER BY `idproduto` ASC";
             $con = $conexao->connection();
             $result = $con->query($sql);
             if($result->num_rows > 0){
                 $retorno = array();
                 while($row = $result->fetch_assoc()){
                     $produto = new Produto();
-                    $produto->setId_Produto($row['idproduto']);
+                    $produto->setId_produto($row['idproduto']);
                     $produto->setNome($row['nome']);
                     $produto->setValor($row['valor']);
                     array_push($retorno,$produto);
@@ -38,9 +38,9 @@
 		}
 		public function consulta($id){
             $conexao = new Conexao(); 
-            $estado  = NULL;
+            $produto  = NULL;
             $con = $conexao->connection();
-			$sql = "SELECT `idproduto`, `nome`, `valor` FROM `produto` WHERE `idproduto` ={$id}";
+			$sql = "SELECT `idproduto`, `nome`, `valor` FROM `produto` WHERE `idproduto` = {$id}";
             $result = $con->query($sql);
         
             if($result->num_rows > 0) {
@@ -52,13 +52,13 @@
     
                     $produto->setNome($nome);
                     $produto->setValor($valor);
-                    $produto->setId_Produto($id);
+                    $produto->setId_produto($id);
     
                 }
 			}
 			
             $con->close();
-            return $estado;
+            return $produto;
 		}
         public static function delete($id){
             $resultado = FALSE;
@@ -73,7 +73,8 @@
         }
         public static function alterar($produto){
             $resultado = FALSE;
-            $con  = Conexao::getConnection();
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
             $sql = "UPDATE `produto` SET `nome`='".$produto->getNome()."',`valor`='".$produto->getValor()."' WHERE `idproduto` = ".$produto->getId_Produto(); 
             if($con->query($sql)==TRUE){
                 $resultado = TRUE;

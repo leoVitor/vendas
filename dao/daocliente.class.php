@@ -2,8 +2,11 @@
 	require_once "../con/conexao.class.php";
 	require_once "../class/cliente.class.php";
 	class DaoCliente{
-		public static function save($cliente){
-			$conexao = new Conexao();
+		public function save($cliente){
+			try{
+
+				$retorno = true;
+				$conexao = new Conexao();
 			$con = $conexao->connection();
 			$sql = "INSERT INTO `cliente`(`nome`, `cpf`, `nascimento`, `rg`, `telefone`, `email`, `endereco_idendereco`, `veiculo_idveiculo`) VALUES (?,?,?,?,?,?,?,?)";
 			$stmt = $con->prepare($sql);
@@ -16,9 +19,17 @@
 			$email = $cliente->getEmail();
 			$endereco_id_endereco = $cliente->getEndereco_Id_Endereco();
 			$veiculo_id_veiculo = $cliente->getVeiculo_Id_Veiculo();
-
-			$stmt->close();
+			$stmt->execute();
+			}catch(Exception $e){
+				$retorno = false;
+				die($e->getMessege());
+			} finally{
+				$stmt->close();
 			$con->close();
+			}
+
+			
+			return $retorno;
 		}
 	
 		public function getAll(){

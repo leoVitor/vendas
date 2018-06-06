@@ -42,7 +42,7 @@
         }
         public function buscar($id){
             $conexao = new Conexao();
-            $estado = NULL;
+            $cidade = NULL;
             $con = $conexao->connection();
             $sql = "SELECT `idcidade`, `nome`, `sigla`, `estado_idestado` FROM `cidade` WHERE `idcidade`= {$id}";
             $result = $con->query($sql);
@@ -55,12 +55,14 @@
                     $sigla = $row['sigla'];
                     $estado_id_estado = $row['estado_idestado'];
 
-                    $cidade->setId_Cidade($id);
+                    $cidade->setId_cidade($id);
                     $cidade->setNome($nome);
                     $cidade->setSigla($sigla);
                     $cidade->setEstado_id_estado($estado_id_estado);
                 }
             }
+            $con->close();
+            return $cidade;
         }
         public static function update($cidade){
             $resultado = FALSE;

@@ -2,8 +2,8 @@
   require_once "../dao/daoproduto.class.php";
   require_once "../class/produto.class.php";
   $produto = NULL;
-   if(isset($_GET['id_produto'])){
-       $id = $_GET['id_produto'];
+   if(isset($_GET["id_produto"])){
+       $id = $_GET["id_produto"];
        $dao = new DaoProduto();
        $produto = $dao->consulta($id);
    }
@@ -27,11 +27,11 @@
           <form method="POST" class="card-panel">
             <div class="row">
               <div class="col s6 input-field">
-                <input type="text" name="nome" id="nome" >
+                <input type="text" name="nome" id="nome" value="<?php echo $produto->getNome();?>" >
                 <label for="nome">Nome do Produto</label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="valor" id="valor">
+                <input type="text" name="valor" id="valor" value="<?php echo $produto->getValor();?>">
                 <label for="valor">Valor do Produto</label>
               </div>
             </div>

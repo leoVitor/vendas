@@ -5,11 +5,12 @@
   require_once "../class/estado.class.php";
 
   $cidade = NULL;
-   if(isset($_GET['id_cidade'])){
-       $id = $_GET['id_cidade'];
+   if(isset($_GET["id_cidade"])){
+       $id = $_GET["id_cidade"];
        $dao = new DaoCidade();
-       $estado = $dao->buscar($id);
+       $cidade = $dao->buscar($id);
    }
+
 ?>
   <!DOCTYPE html>
   <html>
@@ -31,20 +32,25 @@
           <form method="POST" class="card-panel">
             <div class="row">
               <div class="col s6 input-field">
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="nome" id="nome" value="<?php echo $cidade->getNome();?>">
                 <label for="nome">Nome da Cidade</label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="sigla" id="sigla">
+                <input type="text" name="sigla" id="sigla" value="<?php echo $cidade->getSigla();?>">
                 <label for="sigla">Sigla</label>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
                 <?php
-                 echo "<select name='estado' id='estado' required>";
-                 echo "<option value='' disabled selected>Selecione o Estado</option>";
-                 $daoestado = new DaoEstado();
+                $idEstado = $cidade->getEstado_id_estado();
+
+                $daoEstado = new DaoEstado();
+                $estado = $daoEstado->pesquisarEstado($idEstado);
+                echo "<select name='estado' id='estado' required>";
+                echo "<option value='' disabled>Selecione o Estado</option>";
+                echo "<option value='".$estado->getId_estado()."' disabled selected>".$estado->getNome()."</option>";
+                $daoestado = new DaoEstado();
                 $estados = $daoestado->getAll();
                 
                 if($estados != null)

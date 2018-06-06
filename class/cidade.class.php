@@ -48,15 +48,6 @@
         {
             $this->estado_id_estado = $estado_id_estado;
         }
-
-        /*public function getUf()
-        {
-            return $this->uf;
-        }
-        public function setUf($uf)
-        {
-            $this->uf = $uf;
-        }*/
     }
 
 ?>

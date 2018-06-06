@@ -53,7 +53,7 @@
                 $estado->setNome($_POST['nome']);
                 $estado->setUf($_POST['uf']);
 
-                $dao =new DaoEstado();
+                $dao = new DaoEstado();
                 if($dao->save($estado)){
                   echo "<script> alert('Cadastro efetuado')  </script>";
                 }
