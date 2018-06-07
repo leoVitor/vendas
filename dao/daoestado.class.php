@@ -60,7 +60,7 @@
             $con->close();
             return $estado;
 		}
-		public static function update($estado){
+		public function update($estado){
             $resultado = FALSE;
             $conexao = new Conexao();
             $con  = $conexao->connection();
@@ -73,7 +73,7 @@
             $con->close();
             return $resultado;
         }
-        public static function delete($id){
+        public function delete($id){
             $resultado = FALSE;
             $conexao = new Conexao();
             $con = $conexao->connection();

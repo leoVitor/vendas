@@ -45,6 +45,7 @@
 					$cliente->setId_Cliente($row['idcliente']);
 					$cliente->setNome($row['nome']);
 					$cliente->setCpf($row['cpf']);
+					$cliente->setNascimento($row['nascimento']);
 					$cliente->setRg($row['rg']);
 					$cliente->setTelefone($row['telefone']);
 					$cliente->setEmail($row['email']);

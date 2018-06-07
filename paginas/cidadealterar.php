@@ -49,7 +49,7 @@
                 $estado = $daoEstado->pesquisarEstado($idEstado);
                 echo "<select name='estado' id='estado' required>";
                 echo "<option value='' disabled>Selecione o Estado</option>";
-                echo "<option value='".$estado->getId_estado()."' disabled selected>".$estado->getNome()."</option>";
+                echo "<option value='".$estado->getId_estado()."'  selected>".$estado->getNome()."</option>";
                 $daoestado = new DaoEstado();
                 $estados = $daoestado->getAll();
                 

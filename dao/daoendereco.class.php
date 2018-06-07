@@ -62,27 +62,55 @@
             $conexao = new Conexao();
             $endereco = NULL;
             $con = $conexao->connection();
-            $sql = "SELECT `idendereco`, `logradouro`, `cep`, `numero`, `complemento`, `cidade_idcidade` FROM `endereco` WHERE `idendereco`= {$id}";
+            $sql = "SELECT `idendereco`, `logradouro`, `cep`, `numero`, `complemento`, `cidade_idcidade` FROM `endereco` WHERE `idendereco`= " . $id;
             $result = $con->query($sql);
         
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
                     $endereco = new Endereco();
-                    $id = $row['idendereco'];
+                    /*$id = ;
                     $logradouro = $row['logradouro'];
                     $cep = $row['cep'];
                     $numero = $row['numero'];
                     $complemento = $row['complemento'];
-                    $cidade_id_cidade = $row['cidade_idcidade'];
+                    $cidade_id_cidade = $row['cidade_idcidade'];*/
 
-                    $endereco->setId_Endereco($id);
-                    $endereco->setLogradouro($logradouro);
-                    $endereco->setCep($cep);
-                    $endereco->setNumero($numero);
-                    $endereco->setComplemento($complemento);
-                    $cidade_id_cidade->setCidade_Id_Cidade($cidade_id_cidade);
+                    $endereco->setId_Endereco($row['idendereco']);
+                    $endereco->setLogradouro($row['logradouro']);
+                    $endereco->setCep($row['cep']);
+                    $endereco->setNumero($row['numero']);
+                    $endereco->setComplemento($row['complemento']);
+                    $endereco->setCidade_Id_Cidade($row['cidade_idcidade']);
                 }
             }
+            $con->close();
+            return $endereco;
+        }
+        public function update($endereco){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql = "UPDATE `endereco` SET `logradouro`='".$endereco->getLogradouro()."',`cep`='".$endereco->getCep()."',`numero`='".$endereco->getNumero()."',
+                                          `complemento`='".$endereco->getComplemento()."',`cidade_idcidade`='".$endereco->getCidade_Id_Cidade()."'
+                                           WHERE `idendereco`=".$endereco->getId_Endereco();
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "Erro ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+        }
+        public function delete($id){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql ="DELETE FROM `endereco` WHERE `idendereco`= ".$id;
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
+            }
+            $con->close();
+            return $resultado;
         }
     }
 ?>

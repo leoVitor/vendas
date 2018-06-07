@@ -2,7 +2,7 @@
 	require_once "../class/veiculo.class.php";
 	require_once "../con/conexao.class.php";
 	class DaoVeiculo{
-		public static function save($veiculo){
+		public function save($veiculo){
 			$conexao = New Conexao();
 			$sql = "INSERT INTO `veiculo`(`modelo`, `ano`, `placa`, `chassi`, `preco`) VALUES (?,?,?,?,?)";
 			$con = $conexao->connection();
@@ -72,5 +72,30 @@
             $con->close();
             return $veiculo;
 		}
+		public function update($veiculo){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
+			$sql = "UPDATE `veiculo` SET `modelo`='".$veiculo->getModelo()."',`ano`='".$veiculo->getAno()."',`placa`='".$veiculo->getPlaca()."',
+						   `chassi`='".$veiculo->getChassi()."',`preco`='".$veiculo->getPreco()."'  WHERE `idveiculo`= ".$veiculo->getId_Veiculo();
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+		}
+		public function delete($id){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql ="DELETE FROM `veiculo` WHERE `idveiculo`= ".$id;
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
+            }
+            $con->close();
+            return $resultado;
+        }
 	}
 ?>

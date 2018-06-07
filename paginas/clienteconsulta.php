@@ -1,4 +1,8 @@
 <?php 
+    require_once "../dao/daocliente.class.php";
+    require_once "../class/cliente.class.php";
+    require_once "../dao/daoendereco.class.php";
+    require_once "../class/endereco.class.php";
     require_once "../dao/daoveiculo.class.php";
     require_once "../class/veiculo.class.php";
 ?>
@@ -13,6 +17,7 @@
 
           <!--Let browser know website is optimized for mobile-->
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <meta charset="utf-8">
           <title>Consulta de Dados</title>
           </head>
         
@@ -21,12 +26,14 @@
               <table>
                 <thead>
                   <tr>
-                    <th>Código</th>
-                    <th>Modelo</th>
-                    <th>Ano</th>
-                    <th>Placa</th>
-                    <th>Chassi</th>
-                    <th>Preco</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Nascimento</th>
+                    <th>RG</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th>Veículo</th>
                     <th>Alterar</th>
                     <th>Excluir</th>
                   </tr>
@@ -34,19 +41,23 @@
 
               <tbody>
                 <?php
-                  $dao = new DaoVeiculo();
+                  $dao = new DaoCliente();
                   $resultado = $dao->getAll();
                   if($resultado != NULL){
                     foreach ($resultado as $key => $value) {
-                      echo "<tr>";
-                          echo "<td>{$value->getId_Veiculo()}</td>";
-                          echo "<td>{$value->getModelo()}</td>";
-                          echo "<td>{$value->getAno()}</td>";
-                          echo "<td>{$value->getPlaca()}</td>";
-                          echo "<td>{$value->getChassi()}</td>";
-                          echo "<td>{$value->getPreco()}</td>";
-                          echo "<td><a href='veiculoalterar.php?id_veiculo={$value->getId_Veiculo()}'><i class='material-icons'>update</i> </a> </td>";
-                          echo "<td><a href='veiculodeletar.php?id_veiculo={$value->getId_Veiculo()}'><i class='material-icons'>delete</i> </a> </td>";
+                        echo "<tr>";
+                        
+                            $nascimento = date('d-m-Y', strtotime($value->getNascimento() ));
+                            echo "<td>{$value->getNome()}</td>";
+                            echo "<td>{$value->getCpf()}</td>";
+                            echo "<td>".$nascimento."</td>";
+                            echo "<td>{$value->getRg()}</td>";
+                            echo "<td>{$value->getTelefone()}</td>";
+                            echo "<td>{$value->getEmail()}</td>";
+                            echo "<td>{$value->getEndereco_Id_Endereco()}</td>";
+                            echo "<td>{$value->getVeiculo_Id_Veiculo()}</td>";
+                            echo "<td><a href='clientealterar.php?id_cliente={$value->getId_Cliente()}'><i class='material-icons'>update</i> </a> </td>";
+                            //echo "<td><a href='cidadedeletar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }
                   }

@@ -46,8 +46,8 @@
                             echo "<td>{$value->getNumero()}</td>";
                             echo "<td>{$value->getComplemento()}</td>";
                             echo "<td>{$value->getCidade_Id_Cidade()}</td>";
-                            //echo "<td><a href='cidadealterar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>update</i> </a> </td>";
-                            //echo "<td><a href='produtodeletar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>delete</i> </a> </td>";
+                            echo "<td><a href='enderecoalterar.php?id_endereco={$value->getId_Endereco()}'><i class='material-icons'>update</i> </a> </td>";
+                            echo "<td><a href='enderecodeletar.php?id_endereco={$value->getId_Endereco()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }
                   }

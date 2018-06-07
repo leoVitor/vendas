@@ -40,6 +40,30 @@
             $con->close();
             return $retorno;
         }
+
+        public function getOne($city){
+            $retorno = NULL;
+            $conexao = new Conexao();
+            $sql = "SELECT `c`.`idcidade`, `c`.`nome`,`c`.`sigla`, `e`.`nome` AS `estado`, `e`.`uf` AS `uf` 
+                    FROM `cidade` AS `c` INNER JOIN `estado` AS `e` ON `e`.`idestado` = `c`.`estado_idestado` 
+                    WHERE `c`.`idcidade` = ".$city;
+            $con = $conexao->connection();
+            $result = $con->query($sql);
+            if($result->num_rows > 0){
+                $retorno = array();
+                while($row = $result->fetch_assoc()){
+                    $cidade = new Cidade();
+                    $cidade->setId_cidade($row['idcidade']);
+                    $cidade->setNome($row['nome']);
+                    $cidade->setSigla($row['sigla']);
+                    $cidade->setEstado_id_estado($row['uf']);
+                    array_push($retorno,$cidade);
+                }
+            }
+            $con->close();
+            return $retorno;
+        }
+
         public function buscar($id){
             $conexao = new Conexao();
             $cidade = NULL;
@@ -64,7 +88,7 @@
             $con->close();
             return $cidade;
         }
-        public static function update($cidade){
+        public function update($cidade){
             $resultado = FALSE;
             $conexao = new Conexao();
             $con  = $conexao->connection();
@@ -74,6 +98,17 @@
                 $resultado = TRUE;
             }else{
                 echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+        }
+        public function delete($id){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql ="DELETE FROM `cidade` WHERE `idcidade`= ".$id;
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
             }
             $con->close();
             return $resultado;

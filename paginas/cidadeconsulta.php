@@ -43,7 +43,7 @@
                             echo "<td>{$value->getSigla()}</td>";
                             echo "<td>{$value->getEstado_id_estado()}</td>";
                             echo "<td><a href='cidadealterar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>update</i> </a> </td>";
-                            echo "<td><a href='produtodeletar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>delete</i> </a> </td>";
+                            echo "<td><a href='cidadedeletar.php?id_cidade={$value->getId_cidade()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }
                   }
