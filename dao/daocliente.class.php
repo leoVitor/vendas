@@ -57,5 +57,16 @@
 			$con->close();
 			return $retorno;
 		}
+		public function delete($id){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con = $conexao->connection();
+            $sql ="DELETE FROM `cliente` WHERE `idcliente`= ".$id;
+            if($con->query($sql) == TRUE){
+                $resultado = TRUE;
+            }
+            $con->close();
+            return $resultado;
+        }
 	}
 ?>
