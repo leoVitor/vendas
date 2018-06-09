@@ -57,6 +57,43 @@
 			$con->close();
 			return $retorno;
 		}
+		public function buscar($id){
+            $conexao = new Conexao(); 
+            $cliente  = NULL;
+            $con = $conexao->connection();
+			$sql = "SELECT `idcliente`, `nome`, `cpf`, `nascimento`, `rg`, `telefone`, `email`, 
+						   `endereco_idendereco`, `veiculo_idveiculo` FROM `cliente` WHERE `idcliente` = {$id}";
+            $result = $con->query($sql);
+        
+            if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $cliente = new Cliente();
+					$id = $row['idcliente'];
+					$nome = $row['nome'];
+					$cpf = $row['cpf'];
+					$nascimento = $row['nascimento'];
+					$rg = $row['rg'];
+					$telefone = $row['telefone'];
+					$email = $row['email'];
+					$endereco_id_endereco = $row['endereco_idendereco'];
+					$veiculo_id_veiculo = $row['veiculo_idveiculo'];
+    
+                    $cliente->setNome($nome);
+					$cliente->setCpf($cpf);
+					$cliente->setNascimento($nascimento);
+					$cliente->setRg($rg);
+					$cliente->setTelefone($telefone);
+					$cliente->setEmail($email);
+					$cliente->setEndereco_Id_Endereco($endereco_id_endereco);
+					$cliente->setVeiculo_Id_Veiculo($veiculo_id_veiculo);
+                    $cliente->setId_Cliente($id);
+    
+                }
+			}
+			
+            $con->close();
+            return $cliente;
+		}
 		public function delete($id){
             $resultado = FALSE;
             $conexao = new Conexao();
@@ -64,6 +101,22 @@
             $sql ="DELETE FROM `cliente` WHERE `idcliente`= ".$id;
             if($con->query($sql) == TRUE){
                 $resultado = TRUE;
+            }
+            $con->close();
+            return $resultado;
+		}
+		public function update($cliente){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
+			$sql = "UPDATE `cliente` SET `nome`='".$cliente->getNome()."',`cpf`='".$cliente->getCpf()."',`nascimento`=,
+			`rg`='".$cliente->getRg()."',`telefone`='".$cliente->getTelefone()."',`email`='".$cliente->getEmail()."',
+			`endereco_idendereco`='".$cliente->getEndereco_Id_Endereco()."',`veiculo_idveiculo`='".$cliente->getVeiculo_Id_Veiculo()."'
+			 WHERE `idcliente`=".$cliente->getId_Cliente();
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
             }
             $con->close();
             return $resultado;

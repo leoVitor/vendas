@@ -56,7 +56,7 @@
                             echo "<td>{$value->getEmail()}</td>";
                             echo "<td>{$value->getEndereco_Id_Endereco()}</td>";
                             echo "<td>{$value->getVeiculo_Id_Veiculo()}</td>";
-                            //echo "<td><a href='clientealterar.php?id_cliente={$value->getId_Cliente()}'><i class='material-icons'>update</i> </a> </td>";
+                            echo "<td><a href='clientealterar.php?id_cliente={$value->getId_Cliente()}'><i class='material-icons'>update</i> </a> </td>";
                             echo "<td><a href='clientedeletar.php?id_cliente={$value->getId_Cliente()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }

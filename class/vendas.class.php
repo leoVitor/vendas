@@ -17,7 +17,7 @@
 		public function setData($data){
 			$this->data = $data;
 		}
-		public function seValor($valor){
+		public function setValor($valor){
 			$this->valor = $valor;
 		}
 		public function getId_Vendas(){

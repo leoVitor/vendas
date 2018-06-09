@@ -13,7 +13,7 @@
 		public function setId_Itensvendas($id_intensvendas){
 			$this->id_intensvendas = $id_intensvendas;
 		}
-		public function setVendas_Id_vendas($vendas_id_vendas){
+		public function setVendas_Id_Vendas($vendas_id_vendas){
 			$this->vendas_id_vendas = $vendas_id_vendas;
 		}
 		public function setProduto_Id_Produto($produto_id_produto){
