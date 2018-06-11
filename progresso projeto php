@@ -1,0 +1,11 @@
+terminados:
+produto (cadastro,consulta,deleta,altera)
+estado (cadastro,consulta,deleta,altera)
+cidade (cadastro,consulta,deleta,altera)
+endereco (cadastro,consulta,deleta,altera)
+veiculo (cadastro,consulta,deleta,altera)
+cliente (cadastro,consulta,deleta) - erro alterar sintaxe
+venda (cadastro,consulta,daleta) - erro alterar sintaxe
+itensvenda (cadastro,consulta,deleta) - erro alterar sintaxe
+usuario (cadastro,consulta,deleta)
+

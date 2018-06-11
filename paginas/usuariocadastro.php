@@ -1,3 +1,7 @@
+<?php
+  require_once "../class/usuario.class.php";
+  require_once "../dao/daousuario.class.php";
+?>
   <!DOCTYPE html>
   <html>
     <head>
@@ -28,26 +32,44 @@
             </div>
             <div class="row">
               <div class="col s12 input-field">
-                <input type="password" name="senha" id="senha">
-                <label for="senha">Senha</label>
-              </div>
-              <div class="col s12 input-field">
                 <input type="email" name="email" id="email">
                 <label for="email">Email</label>
+              </div>
+              <div class="col s12 input-field">
+                <input type="password" name="senha" id="senha">
+                <label for="senha">Senha</label>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <p>
-                  <input name="group1" type="radio" id="test4" disabled="disabled" />
-                  <label for="test4">Brown</label>
-                </p>
-                <p>
-                  <input name="group1" type="radio" id="test4" disabled="disabled" />
-                  <label for="test4">Brown</label>
-                </p>
+              <select name="administrador" id="administrador">
+                <option value="" disabled selected>Tipo de Usuario</option>
+                <option value="0">Administrador</option>
+                <option value="1">Vendedor</option>
+              </select>
+              <label>Tipo de Usuario</label>
               </div>
             </div>
+            <div class="row">
+              <div class="col s12 center">
+                <button class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
+              </div>
+            </div>
+            <?php
+              if(isset($_POST['submit'])){
+                $usuario = new Usuario();
+                $usuario->setNome($_POST['nome']);
+                $usuario->setSobrenome($_POST['sobrenome']);
+                $usuario->setEmail($_POST['email']);
+                $usuario->setSenha($_POST['senha']);
+                $usuario->setAdministrador($_POST['administrador']);
+
+                $dao = new DaoUsuario();
+                if($dao->save($usuario)){
+                  echo "<script> alert('Cadastro efetuado')  </script>";
+                }
+              }
+            ?>
           </form>
         </div>
       </div>

@@ -11,7 +11,7 @@
 			
 		}
 
-		public function setIdusuario($idusuario){
+		public function setId_Usuario($idusuario){
 			$this->idusuario = $idusuario;
 		}
 		public function setNome($nome){
@@ -29,7 +29,7 @@
 		public function setAdministrador($administrador){
 			$this->administrador = $administrador;
 		}
-		public function getIdusuario(){
+		public function getId_Usuario(){
 			return $this->idusuario;
 		}
 		public function getNome(){
