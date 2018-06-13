@@ -1,6 +1,12 @@
 <?php
   require_once "../class/usuario.class.php";
   require_once "../dao/daousuario.class.php";
+  $usuario = NULL;
+  if(isset($_GET['id_usuario'])){
+      $id = $_GET['id_usuario'];
+      $dao = new DaoUsuario();
+      $usuario = $dao->consulta($id);
+  }
 ?>
   <!DOCTYPE html>
   <html>
@@ -13,7 +19,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="utf-8">
-      <title>Cadastro de Usuario</title>
+      <title>Alterar Dados</title>
     </head>
 
     <body>
@@ -22,22 +28,31 @@
           <form method="POST" class="card-panel">
             <div class="row">
               <div class="col s12 input-field">
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="nome" id="nome" value="<?php echo $usuario->getNome();?>">
                 <label for="nome">Nome</label>
               </div>
               <div class="col s12 input-field">
-                <input type="text" name="sobrenome" id="sobrenome">
+                <input type="text" name="sobrenome" id="sobrenome" value="<?php echo $usuario->getSobrenome();?>">
                 <label for="sobrenome">Sobrenome</label>
               </div>
             </div>
             <div class="row">
               <div class="col s12 input-field">
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" value="<?php echo $usuario->getEmail();?>">
                 <label for="email">Email</label>
               </div>
               <div class="col s12 input-field">
-                <input type="password" name="senha" id="senha">
+                <input type="password" name="senha" id="senha" value="<?php echo $usuario->getSenha();?>">
                 <label for="senha">Senha</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select>
+                  <option value="0" selected>Vendedor</option>
+                  <option value="1">Administrador</option>
+                </select>
+                <label>Nível de acesso</label>
               </div>
             </div>
             <div class="row">
@@ -47,7 +62,6 @@
             </div>
             <?php
               if(isset($_POST['submit'])){
-                $usuario = new Usuario();
                 $usuario->setNome($_POST['nome']);
                 $usuario->setSobrenome($_POST['sobrenome']);
                 $usuario->setEmail($_POST['email']);
@@ -55,8 +69,8 @@
                 $usuario->setAdministrador(0); //1 administrador, 0 usuario normal;
 
                 $dao = new DaoUsuario();
-                if($dao->save($usuario)){
-                  echo "<script> alert('Cadastro efetuado')  </script>";
+                if($dao->update($usuario)){
+                    echo "<script> alert('Dados Alterados'); window.location.href='usuarioconsulta.php'; </script>";
                 }
               }
             ?>

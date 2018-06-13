@@ -27,6 +27,7 @@
                     <th>Email</th>
                     <th>Senha</th>
                     <th>Tipo de Usuario</th>
+                    <th>Alterar</th>
                     <th>Excluir</th>
                   </tr>
                 </thead>
@@ -43,7 +44,13 @@
                           echo "<td>{$value->getSobrenome()}</td>";
                           echo "<td>{$value->getEmail()}</td>";
                           echo "<td>{$value->getSenha()}</td>";
-                          echo "<td>{$value->getAdministrador()}</td>";
+                          //echo "<td>{$value->getAdministrador()}</td>";
+                          if($value->getAdministrador() == 1 ){
+                            echo "<td>Administrador</td>";
+                          }else{
+                            echo "<td>Vendedor</td>";
+                          }
+                          echo "<td><a href='usuarioalterar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>update</i> </a> </td>";
                           echo "<td><a href='usuariodeletar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }

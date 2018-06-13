@@ -51,7 +51,7 @@
         
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $usuario = new Produto();
+                    $usuario = new Usuario();
 					$id = $row['idusuario'];
 					$nome = $row['nome'];
                     $email = $row['email'];
@@ -72,6 +72,20 @@
             $con->close();
             return $usuario;
 		}
+        public function update($usuario){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
+            $sql = "UPDATE `usuario` SET `nome`='".$usuario->getNome()."',`email`='".$usuario->getEmail()."',`senha`='".$usuario->getSenha()."',
+            `sobrenome`='".$usuario->getSobrenome()."',`administrador`='".$usuario->getAdministrador()."' WHERE `idusuario`= ".$usuario->getId_Usuario();
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
+        }
         public static function delete($id){
             $resultado = FALSE;
             $conexao = new Conexao();
