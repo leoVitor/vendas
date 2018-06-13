@@ -15,7 +15,8 @@
     </head>
 
     <body>
-      <div class="wrapper">
+      <div class="wrapper ">
+        <!-- sidebar -->
         <div class="sidebar ">
           <div class="sidebar-wrapper ">
             <ul id="slide-out" class="side-nav fixed ">
@@ -24,72 +25,73 @@
                   <div class="background">
                     <img src="img/banner2.png">
                   </div>
-                  <a ><img class="circle" src="img/user.jpeg"></a>
-                  <a ><span class="white-text name">Leo Vitor</span></a>
-                  <a ><span class="white-text email">leo@idm.com</span></a>
+                  <a href=""><img class="circle" src="img/user.jpeg"></a>
+                  <a href=""><span class="black-text name">Leo Vitor</span></a>
+                  <a href=""><span class="black-text email">leo@idm.com</span></a>
                 </div>
               </li>
               <li><div class="divider"></div></li>
-              <li><a class="waves-effect" href="a.php">Home</a></li>
+              <li class=" grey darken-1 active"><a class="waves-effect" href="a.php">Home</a></li>
               <li><div class="divider"></div></li>
-              <li class=" grey darken-1 active"><a href="http://localhost/vendas/paginas/layout.php">Table</a></li>
+              <li><a href="http://localhost/vendas/paginas/layout.php">Table</a></li>
               <li><div class="divider"></div></li>
             </ul>
           </div>
-          <a class="btn hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a>
         </div>
-        <div class="main-panel"> 
-          <nav class="grey darken-3">
+        <!-- sidebar -->
+        <div class="main-panel">
+          <!-- navbar -->
+          <nav class="grey darken-3 " >
             <div class="nav-wrapper">
               <a class="brand-logo center">Logo</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
                 <li><a href="collapsible.html">JavaScript</a></li>
-                <audio autoplay>
-                  <source src="http://localhost/vendas/paginas/fonts/roboto/audio.mp3" type="audio/mp3">
-                </audio>
               </ul>
+              <audio autoplay>
+                  <source src="http://localhost/vendas/paginas/fonts/roboto/audios.mp3" type="audio/mp3">
+                </audio>
             </div>
           </nav>
+          <!-- navbar -->
           <a class="btn hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a>
+          <!-- Page -->
           <div class="row">
             <div class="col s6 offset-s3">
-              <table class="bordered highlight centered">
-                <thead>
-                  <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Alterar</th>
-                    <th>Excluir</th>
-                  </tr>
-                </thead>
-
-              <tbody>
+              <form method="POST" class="card-panel">
+                <div class="row">
+                  <div class="col s6 input-field">
+                    <input type="text" name="nome" id="nome">
+                    <label for="nome">Nome do Produto</label>
+                  </div>
+                  <div class="col s6 input-field">
+                    <input type="text" name="valor" id="valor">
+                    <label for="valor">Valor do Produto</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 center">
+                    <button class="btn waves-effect waves-light grey darken-1" type="submit" name="submit"></i>Cadastrar</button>
+                  </div>
+                </div>
                 <?php
-                  $dao = new DaoProduto();
-                  $resultado = $dao->getAll();
-                  if($resultado != NULL){
-                    foreach ($resultado as $key => $value) {
-                      echo "<tr>";
-                        echo "<td>{$value->getId_Produto()}</td>";
-                          echo "<td>{$value->getNome()}</td>";
-                          echo "<td>{$value->getValor()}</td>";
-                          echo "<td><a href='produtoalterar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>update</i> </a> </td>";
-                          echo "<td><a href='produtodeletar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>delete</i> </a> </td>";
-                        echo "</tr>";
+                  if (isset($_POST['submit'])) {
+                    $produto = new Produto();
+                    $produto->setNome($_POST['nome']);
+                    $produto->setValor($_POST['valor']);
+
+                    $dao = new DaoProduto();
+                    if($dao->save($produto)){
+                      echo "<script> alert('Cadastro efetuado')  </script>";
                     }
                   }
                 ?>
-              </tbody>
-              </table>
+              </form>
             </div>
           </div>
+          <!-- page -->
         </div>
-      </div>
-       <div class="fixed-action-btn">
-        <a href="produtocadastro.php" class="btn-floating pulse btn-large waves-effect waves-light grey darken-4"><i class="material-icons">add</i></a>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -103,3 +105,5 @@
       </script>
     </body>
   </html>
+
+  <!-- <a class="btn hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a> -->

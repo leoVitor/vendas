@@ -16,8 +16,8 @@
           <title>Consulta de estado</title>
           </head>
         
-          <div class="row">
-            <div class="col s6 offset-s3">
+          <div class="row" >
+            <div class="col s6 offset-s3" >
               <table>
                 <thead>
                   <tr>
