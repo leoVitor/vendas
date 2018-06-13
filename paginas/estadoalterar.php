@@ -37,7 +37,7 @@
             </div>
             <div class="row">
               <div class="col s12 center">
-                <button id="submit" class="btn waves-effect waves-light" type="submit" name="submit"></i>Cadastrar</button>
+                <button id="submit" class="btn waves-effect waves-light" type="submit" name="submit"></i>Alterar</button>
               </div>
             </div>
             <?php

@@ -36,7 +36,6 @@
               <li><div class="divider"></div></li>
             </ul>
           </div>
-          <a class="btn hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a>
         </div>
         <div class="main-panel"> 
           <nav class="grey darken-3">
@@ -57,7 +56,7 @@
                   <tr>
                     <th>Código</th>
                     <th>Nome</th>
-                    <th>Valor</th>
+                    <th>Valor R$</th>
                     <th>Alterar</th>
                     <th>Excluir</th>
                   </tr>
@@ -72,7 +71,7 @@
                       echo "<tr>";
                         echo "<td>{$value->getId_Produto()}</td>";
                           echo "<td>{$value->getNome()}</td>";
-                          echo "<td>{$value->getValor()}</td>";
+                          echo "<td>".$value->getValor()." R$ </td>";
                           echo "<td><a href='produtoalterar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>update</i> </a> </td>";
                           echo "<td><a href='produtodeletar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
