@@ -94,7 +94,7 @@
                 $veiculo = $daoVeiculo->busca($idveiculo);
                 echo "<select name='veiculo' id='veiculo' required>";
                 echo "<option value='' disabled selected>Modelo do Veículo</option>";
-                echo "<option value='".$veiculo->getId_Veiculo()."'  selected>".$veiculo->getModelo()."</option>";
+                echo "<option value='' ".$veiculo->getId_Veiculo()."'  selected>".$veiculo->getModelo()."</option>";
                 $daoveiculo = new DaoVeiculo();
                 $buscaveiculo = $daoveiculo->getAll();
                 

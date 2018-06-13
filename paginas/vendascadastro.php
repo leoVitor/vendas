@@ -62,6 +62,7 @@
                 $vendas->setCliente_Id_Cliente($_POST['cliente']);
                 $vendas->setData($_POST['data']);
                 $vendas->setValor($_POST['valor']);
+                var_dump($_POST['cliente']);
                 
                 $dao =new DaoVendas();
                 if($dao->save($vendas)){

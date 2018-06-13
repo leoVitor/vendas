@@ -47,15 +47,15 @@
 						$retorno = array();
 						while($row = $result->fetch_assoc()){
 							$cliente = new Cliente();
-							$cliente->setId_Cliente($row[`c`.`idcliente`]);
-							$cliente->setNome($row[`c`.'nome']);
-							$cliente->setCpf($row[`c`.'cpf']);
-							$cliente->setNascimento($row[`c`.'nascimento']);
-							$cliente->setRg($row[`c`.'rg']);
-							$cliente->setTelefone($row[`c`.'telefone']);
-							$cliente->setEmail($row[`c`.'email']);
-							$cliente->setEndereco_Id_Endereco($row[`e`.'endereco']);
-							$cliente->setVeiculo_Id_Veiculo($row[`v`.'modelo']);
+							$cliente->setId_Cliente($row['idcliente']);
+							$cliente->setNome($row['nome']);
+							$cliente->setCpf($row['cpf']);
+							$cliente->setNascimento($row['nascimento']);
+							$cliente->setRg($row['rg']);
+							$cliente->setTelefone($row['telefone']);
+							$cliente->setEmail($row['email']);
+							$cliente->setEndereco_Id_Endereco($row['endereco']);
+							$cliente->setVeiculo_Id_Veiculo($row['modelo']);
 							
 							array_push($retorno,$cliente);
 						}
