@@ -46,9 +46,6 @@
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
                 <li><a href="collapsible.html">JavaScript</a></li>
-                <audio autoplay>
-                  <source src="http://localhost/vendas/paginas/fonts/roboto/audio.mp3" type="audio/mp3">
-                </audio>
               </ul>
             </div>
           </nav>

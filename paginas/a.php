@@ -49,9 +49,6 @@
                 <li><a href="badges.html">Components</a></li>
                 <li><a href="collapsible.html">JavaScript</a></li>
               </ul>
-              <audio autoplay>
-                  <source src="http://localhost/vendas/paginas/fonts/roboto/audios.mp3" type="audio/mp3">
-                </audio>
             </div>
           </nav>
           <!-- navbar -->

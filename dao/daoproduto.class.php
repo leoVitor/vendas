@@ -2,7 +2,7 @@
 	require_once "../class/produto.class.php";
 	require_once "../con/conexao.class.php";
 	class DaoProduto{
-		public static function save($produto){
+		public function save($produto){
 			$conexao = New Conexao();
 			$sql = "INSERT INTO `produto`(`nome`, `valor`) VALUES (?,?)";
 			$con = $conexao->connection();
@@ -21,6 +21,25 @@
             $retorno = NULL;
             $conexao = new Conexao(); 
             $sql = "SELECT `idproduto`, `nome`, `valor`  FROM `produto` ORDER BY `idproduto` ASC";
+            $con = $conexao->connection();
+            $result = $con->query($sql);
+            if($result->num_rows > 0){
+                $retorno = array();
+                while($row = $result->fetch_assoc()){
+                    $produto = new Produto();
+                    $produto->setId_produto($row['idproduto']);
+                    $produto->setNome($row['nome']);
+                    $produto->setValor($row['valor']);
+                    array_push($retorno,$produto);
+                }
+            }
+            $con->close();
+            return $retorno;
+        }
+        public function getLimit(){
+            $retorno = NULL;
+            $conexao = new Conexao(); 
+            $sql = "SELECT `idproduto`, `nome`, `valor`  FROM `produto` LIMIT ";
             $con = $conexao->connection();
             $result = $con->query($sql);
             if($result->num_rows > 0){
