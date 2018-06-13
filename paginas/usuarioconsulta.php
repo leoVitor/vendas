@@ -43,7 +43,7 @@
                           echo "<td>{$value->getSobrenome()}</td>";
                           echo "<td>{$value->getEmail()}</td>";
                           echo "<td>{$value->getSenha()}</td>";
-                          echo "<td>{$value->getAdministrador()}</td>";//echo "<td><a href='produtoalterar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>update</i> </a> </td>";
+                          echo "<td>{$value->getAdministrador()}</td>";
                           echo "<td><a href='usuariodeletar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }

@@ -64,8 +64,13 @@
             <div class="row">
               <div class="col s12">
                 <?php
+                $idendereco = $cliente->getEndereco_Id_Endereco();
+
+                $daoEndereco = new DaoEndereco();
+                $endereco = $daoEndereco->buscar($idendereco);
                 echo "<select name='endereco' id='endereco' required>";
                 echo "<option value='' disabled selected>Endereço</option>";
+                echo "<option value='".$endereco->getId_Endereco()."'  selected>".$endereco->getLogradouro()."</option>";
                 $daoendereco = new DaoEndereco();
                 $buscaendereco = $daoendereco->getAll();
                 
@@ -82,9 +87,14 @@
             </div>
             <div class="row">
               <div class="col s12">
-              <?php
+                <?php
+                $idveiculo = $cliente->getVeiculo_Id_Veiculo();
+
+                $daoVeiculo = new DaoVeiculo();
+                $veiculo = $daoVeiculo->busca($idveiculo);
                 echo "<select name='veiculo' id='veiculo' required>";
                 echo "<option value='' disabled selected>Modelo do Veículo</option>";
+                echo "<option value='".$veiculo->getId_Veiculo()."'  selected>".$veiculo->getModelo()."</option>";
                 $daoveiculo = new DaoVeiculo();
                 $buscaveiculo = $daoveiculo->getAll();
                 
@@ -106,7 +116,6 @@
             </div>
             <?php
                 if(isset($_POST['submit'])){
-                $cliente = new Cliente();
                 $cliente->setNome($_POST['nome']);
                 $cliente->setCpf($_POST['cpf']);
                 $cliente->setNascimento($_POST['nascimento']);

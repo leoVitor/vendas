@@ -46,7 +46,7 @@
                     $produto->setValor($_POST['valor']);
 
                     if(DaoProduto::alterar($produto)){
-                        echo "<script> alert ( 'Alterado com sucesso' ) </script>";
+                        echo "<script> alert ('Alterado com sucesso'); window.location.href='produtoconsulta.php' </script>";
                     }  
                 }
               ?>

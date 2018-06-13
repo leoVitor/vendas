@@ -3,12 +3,13 @@
   require_once "../class/vendas.class.php";
   require_once "../dao/daocliente.class.php";
   require_once "../class/cliente.class.php";
+  require_once "../con/conexao.class.php";
 
   $vendas = NULL;
   if(isset($_GET["id_vendas"])){
       $id = $_GET["id_vendas"];
       $dao = new DaoVendas();
-      $vendas = $dao->buscar($id);
+      $vendas = $dao->getOne($id);
   }
 ?>
   <!DOCTYPE html>
@@ -39,17 +40,32 @@
                 echo "<select name='cliente' id='cliente' required>";
                 echo "<option value='' disabled selected>Selecione o Cliente</option>";
                 echo "<option value='".$cliente->getId_Cliente()."'  selected>".$cliente->getNome()."</option>";
-                $daocliente = new DaoCliente();
-                $clientes = $daocliente->getAll();
+                
+                
+                /*$clientes = $daoCliente->getAll();                       
                 
                 if($clientes != null)
-                  foreach ($clientes as $key => $cliente) {
-                    echo "<option value='{$cliente->getId_Cliente()}'>{$cliente->getNome()}</option>";
+                  foreach ($clientes as $key => $value) {
+                    echo "<option value='{$value->getId_Cliente()}'>{$value->getNome()}</option>";
+
                   }
                  
-                 else echo "null";
+                 else echo "null";*/
+
+                 $conexao = new Conexao();
+                 $con = $conexao->connection();
+                 $sql = "SELECT `idcliente`, `nome` FROM `cliente` ORDER BY `nome` ASC";
+                 $result = mysqli_query($con,$sql);
+
+                 if(mysqli_num_rows($result) > 0){
+                   while($row = mysqli_fetch_assoc($result)){
+                     echo "<option value='{$row['idcliente']}'>{$row['nome']}</option>";
+                   }
+                 }
+                 mysqli_close($con);
+
                 echo "</select>";
-                echo "<label>Clientes</label>"
+                echo "<label>Clientes</label>";
                 ?>
               </div>
             </div>
@@ -59,7 +75,7 @@
                 <label for="data"></label>
               </div>
               <div class="col s6 input-field">
-                <input type="text" name="valor" id="valor" value="<?php echo $vendas->getValor();?>">
+                <input type="number" name="valor" id="valor" value="<?php echo $vendas->getValor();?>">
                 <label for="valor">Valor</label>
               </div>
             </div>
@@ -70,7 +86,7 @@
             </div>
             <?php
                 if (isset($_POST['submit'])) {
-                $vendas = new Vendas();
+                  var_dump($_POST['cliente']);
                 $vendas->setCliente_Id_Cliente($_POST['cliente']);
                 $vendas->setData($_POST['data']);
                 $vendas->setValor($_POST['valor']);

@@ -95,7 +95,6 @@
             </div>
             <?php
                 if (isset($_POST['submit'])) {
-                $itensvendas = new ItensVendas();
                 $itensvendas->setVendas_Id_Vendas($_POST['venda']);
                 $itensvendas->setProduto_Id_Produto($_POST['produto']);
                 $itensvendas->setQuantidade($_POST['quantidade']);
