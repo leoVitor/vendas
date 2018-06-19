@@ -71,6 +71,39 @@
 			
             $con->close();
             return $usuario;
+        }
+        
+        public function login($email){
+            $conexao = new Conexao(); 
+            $usuario  = NULL;
+            $con = $conexao->connection();
+			$sql = "SELECT `idusuario`, `nome`, `email`, `senha`, `sobrenome`, `administrador` FROM `usuario` WHERE `email` = '{$email}'";
+            $result = $con->query($sql);
+        
+            //echo $sql;
+            if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $usuario = new Usuario();
+					$id = $row['idusuario'];
+					$nome = $row['nome'];
+                    $email = $row['email'];
+                    $senha = $row['senha'];
+                    $sobrenome = $row['sobrenome'];
+                    $administrador = $row['administrador'];
+    
+                    $usuario->setNome($nome);
+                    $usuario->setEmail($email);
+                    $usuario->setSenha($senha);
+                    $usuario->setSobrenome($sobrenome);
+                    $usuario->setAdministrador($administrador);
+                    $usuario->setId_Usuario($id);
+    
+                }
+			}
+			
+            $con->close();
+            //var_dump($usuario);
+            return $usuario;
 		}
         public function update($usuario){
             $resultado = FALSE;

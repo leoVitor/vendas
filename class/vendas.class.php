@@ -4,8 +4,7 @@
 		private $cliente_id_cliente;
 		private $data;
 		private $valor;
-		private $nome_cliente;
-
+		
 		public function __construct(){
 
 		}
@@ -32,15 +31,6 @@
 		}
 		public function getValor(){
 			return $this->valor;
-		}
-
-		public function getNomeCliente()
-		{
-			return $this->nome_cliente;
-		}
-		public function setNomeCliente($nome_cliente)
-		{
-			$this->nome_cliente = $nome_cliente;
 		}
 	}
 ?>

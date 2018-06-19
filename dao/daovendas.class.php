@@ -7,16 +7,21 @@
 			$con = $conexao->connection();
 			$sql = "INSERT INTO `vendas`(`cliente_idcliente`, `data`, `valor`) VALUES (?,?,?)";
 			$stmt = $con->prepare($sql);
-			$stmt->bind_param('iss',$cliente_id_cliente,$data,$valor);
+            $stmt->bind_param('iss',$cliente_id_cliente,$data,$valor);
+            
 			$cliente_id_cliente = $vendas->getCliente_Id_Cliente();
 			$data = $vendas->getData();
-			$valor = $vendas->getValor();
-			$stmt->execute();
+            $valor = $vendas->getValor();
+            
+            $stmt->execute();
+            
+            $id_retornado = $con->insert_id; 
 
-			$stmt->close();
-			$con->close();
+            $stmt->close();
+            $con->close();    
 
-			return true;
+            return $id_retornado;
+            
 		}
 		public function getAll(){
             $retorno = NULL;
@@ -37,6 +42,7 @@
                 }
             }
             $con->close();
+
             return $retorno;
 		}
 		public function buscar($id){

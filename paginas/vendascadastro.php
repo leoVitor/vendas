@@ -1,8 +1,14 @@
+
+
 <?php
+
   require_once "../dao/daovendas.class.php";
   require_once "../class/vendas.class.php";
   require_once "../dao/daocliente.class.php";
   require_once "../class/cliente.class.php";
+
+  session_start(); 
+
 ?>
   <!DOCTYPE html>
   <html>
@@ -62,10 +68,18 @@
                 $vendas->setCliente_Id_Cliente($_POST['cliente']);
                 $vendas->setData($_POST['data']);
                 $vendas->setValor($_POST['valor']);
-                var_dump($_POST['cliente']);
+                
                 
                 $dao =new DaoVendas();
-                if($dao->save($vendas)){
+                $id_retorno = $dao->save($vendas);
+
+                $_SESSION['id_venda'] = $id_retorno; 
+
+                /**
+                 * aqui
+                 * 
+                 */
+                if( $id_retorno > 0 ){
                   echo "<script> alert('Cadastro efetuado')  </script>";
                 }
               }
