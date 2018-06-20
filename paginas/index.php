@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                   <div class="col s12 center">
-                    <button class="btn waves-effect waves-light grey darken-1" type="submit" name="submit"></i>Cadastrar</button>
+                    <button class="btn waves-effect waves-light grey darken-1" type="submit" name="submit"></i>Logar</button>
                   </div>
                 </div>
                 <?php

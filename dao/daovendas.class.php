@@ -115,7 +115,22 @@
             }
             $con->close();
             return $resultado;
+        }
+        
+        public function updatePrice($venda){
+            $resultado = FALSE;
+            $conexao = new Conexao();
+            $con  = $conexao->connection();
+			$sql = "UPDATE `vendas` SET `valor`='".$venda->getValor()."' WHERE `idvendas`= ".$venda->getId_Vendas();
+            if($con->query($sql)==TRUE){
+                $resultado = TRUE;
+            }else{
+                echo "ERRO ".$con->error;
+            }
+            $con->close();
+            return $resultado;
 		}
+
 		public function delete($id){
             $resultado = FALSE;
             $conexao = new Conexao();
