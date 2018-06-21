@@ -37,8 +37,11 @@
                   <a href=""><span class="white-text email"> <?php echo $_SESSION['email']; ?> </span></a>
                 </div>
               </li>
-
-              <li><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
+              <li ><a class="waves-effect" href="produtoconsulta.php"><i class="material-icons">home</i>Produto</a></li>
+              
+              <li><a href="clienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
+              
+              <li class=" grey darken-1 active"><a href="vendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
             </ul>
           </div>

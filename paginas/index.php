@@ -48,7 +48,7 @@
 
                 <div>
                   <div class="col s8 offset-s2 input-field">
-                    <input type="password" name="senha" id="senha" minlength="5">
+                    <input type="password" name="senha" id="senha" minlength="5" class="validate required">
                     <label for="senha">Senha</label>
                   </div>
                 </div>

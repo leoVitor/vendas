@@ -35,16 +35,12 @@
                   <a href=""><span class="white-text email"> <?php echo $_SESSION['email']; ?> </span></a>
                 </div>
               </li>
-
-              <li><div class="divider"></div></li>
-              <li><a class="waves-effect" href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
-              <li><div class="divider"></div></li>
-              <li><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
-              <li><div class="divider"></div></li>
-              <li class=" grey darken-1 active"><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
-              <li><div class="divider"></div></li>
-              <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
-              <li><div class="divider"></div></li>
+              <li><a class="waves-effect" href="produtoconsulta.php"><i class="material-icons">home</i>Produto</a></li>
+             
+              <li class=" grey darken-1 active"><a href="clienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
+              
+              <li><a href="vendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
+             
             </ul>
           </div>
         </div>
