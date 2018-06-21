@@ -156,7 +156,7 @@
                     $daoVendas = new DaoVendas();
                     $resultado = $daoVendas->updatePrice($venda);
                     if($resultado){
-                      echo "<script>alert('O Valor total de sua compra foi de R$ ".$_SESSION['priceItens'].",00'); window.location.href='produtoconsulta.php'</script>";
+                      echo "<script>alert('O Valor total de sua compra foi de R$ ".$_SESSION['priceItens'].",00'); window.location.href='admprodutoconsulta.php'</script>";
                       $_SESSION['priceItens'] = 0;
                     }
 

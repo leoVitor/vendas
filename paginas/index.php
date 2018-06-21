@@ -68,7 +68,7 @@
                         if($resultado->getAdministrador() == 1){
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['nome'] = $resultado->getNome() . " " . $resultado->getSobrenome();
-                            echo "<script> window.location.href='produtoConsulta.php'</script>";
+                            echo "<script> window.location.href='admprodutoconsulta.php'</script>";
                         }
                         else{
                             $_SESSION['email'] = $_POST['email'];

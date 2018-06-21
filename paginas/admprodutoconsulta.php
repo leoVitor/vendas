@@ -1,9 +1,9 @@
 <?php 
-    session_start();
-    require_once "../dao/daousuario.class.php";
-    require_once "../class/usuario.class.php";
+  session_start();
+  require_once "../dao/daoproduto.class.php";
+  require_once "../class/produto.class.php";
 ?>
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html>
     <head>
       <!--Import Google Icon Font-->
@@ -33,9 +33,9 @@
               </li>
 
               <li><div class="divider"></div></li>
-              <li><a class="waves-effect" href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
+              <li class=" grey darken-1 active"><a class="waves-effect" href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
               <li><div class="divider"></div></li>
-              <li class=" grey darken-1 active"><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
+              <li><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
               <li><div class="divider"></div></li>
               <li><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
               <li><div class="divider"></div></li>
@@ -50,49 +50,40 @@
           <nav class="grey darken-3 " >
             <div class="nav-wrapper">
               <a class="brand-logo center">Seu Comércio</a>
+              
             </div>
           </nav>
           <!-- navbar -->
-          <a class="bton hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a>
+          <a class="btn hide-on-large-only" data-activates="slide-out"><i class="material-icons">menu</i></a>
           <!-- Page -->
-          <div class="row"></div>
-          <div class="row"></div>
           <div class="row">
             <div class="col s8 offset-s3 card-panel">
-              <table>
+              
+            <div class="row" >
+            <div class="col s12" >
+              <table class="striped highlight">
                 <thead>
                   <tr>
                     <th>Código</th>
                     <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Email</th>
-                    <th>Senha</th>
-                    <th>Tipo de Usuario</th>
+                    <th>Valor</th>
                     <th>Alterar</th>
-                    <th>Excluir</th>
+                    <th>Deletar</th>
                   </tr>
                 </thead>
 
               <tbody>
                 <?php
-                  $dao = new DaoUsuario();
+                  $dao = new DaoProduto();
                   $resultado = $dao->getAll();
                   if($resultado != NULL){
                     foreach ($resultado as $key => $value) {
                       echo "<tr>";
-                        echo "<td>{$value->getId_Usuario()}</td>";
+                        echo "<td>{$value->getId_Produto()}</td>";
                           echo "<td>{$value->getNome()}</td>";
-                          echo "<td>{$value->getSobrenome()}</td>";
-                          echo "<td>{$value->getEmail()}</td>";
-                          echo "<td>{$value->getSenha()}</td>";
-                          //echo "<td>{$value->getAdministrador()}</td>";
-                          if($value->getAdministrador() == 1 ){
-                            echo "<td>Administrador</td>";
-                          }else{
-                            echo "<td>Vendedor</td>";
-                          }
-                          echo "<td><a href='usuarioalterar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>update</i> </a> </td>";
-                          echo "<td><a href='usuariodeletar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>delete</i> </a> </td>";
+                          echo "<td> R$ {$value->getValor()},00</td>";
+                          echo "<td><a href='produtoalterar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>update</i> </a> </td>";
+                          echo "<td><a href='produtodeletar.php?id_produto={$value->getId_Produto()}'><i class='material-icons'>delete</i> </a> </td>";
                         echo "</tr>";
                     }
                   }
@@ -102,18 +93,20 @@
             </div>
           </div>
 
+            </div>
+          </div>
           <!-- page -->
         </div>
       </div>
       <div class="fixed-action-btn">
-        <a href="usuariocadastro.php" class="btn-floating pulse btn-large waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
+        <a href="produtocadastro.php" class="btn-floating pulse btn-large waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function(){
-          $(".bton").sideNav({
+          $(".btn").sideNav({
             menuWidth: 250,
           });
         })

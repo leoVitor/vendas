@@ -1,9 +1,12 @@
-<?php 
-    session_start();
-    require_once "../dao/daousuario.class.php";
-    require_once "../class/usuario.class.php";
+<?php
+  require_once "../dao/daovendas.class.php";
+  require_once "../class/vendas.class.php";
+  require_once "../dao/daocliente.class.php";
+  require_once "../class/cliente.class.php";
+
+  session_start();
 ?>
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html>
     <head>
       <!--Import Google Icon Font-->
@@ -33,13 +36,15 @@
               </li>
 
               <li><div class="divider"></div></li>
-              <li><a class="waves-effect" href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
+              <li><a href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
               <li><div class="divider"></div></li>
-              <li class=" grey darken-1 active"><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
+              <li><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
               <li><div class="divider"></div></li>
               <li><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
               <li><div class="divider"></div></li>
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
+              <li><div class="divider"></div></li>
+              <li><a href="enderecoconsulta.php"><i class="material-icons">local_grocery_store</i>Endereço</a></li>
               <li><div class="divider"></div></li>
             </ul>
           </div>
@@ -50,6 +55,7 @@
           <nav class="grey darken-3 " >
             <div class="nav-wrapper">
               <a class="brand-logo center">Seu Comércio</a>
+              
             </div>
           </nav>
           <!-- navbar -->
@@ -57,56 +63,63 @@
           <!-- Page -->
           <div class="row"></div>
           <div class="row"></div>
-          <div class="row">
-            <div class="col s8 offset-s3 card-panel">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Email</th>
-                    <th>Senha</th>
-                    <th>Tipo de Usuario</th>
-                    <th>Alterar</th>
-                    <th>Excluir</th>
-                  </tr>
-                </thead>
 
-              <tbody>
+          <div class="row">
+            <div class="col s6 offset-s4 ">
+              
+              <form method="POST" class="card-panel">
+                <div class="row">
+                  <div class="col s12">
+                    <?php
+                      echo "<select name='cliente' id='cliente' required>";
+                      echo "<option value='' disabled selected>Selecione o Cliente</option>";
+                      $daocliente = new DaoCliente();
+                      $clientes = $daocliente->getAll();
+
+                      if($clientes != null)
+                      foreach ($clientes as $key => $cliente) {
+                      echo "<option value='{$cliente->getId_Cliente()}'>{$cliente->getNome()}</option>";
+                      }
+
+                      else echo "null";
+                      echo "</select>";
+                      echo "<label>Clientes</label>"
+                    ?>
+                  </div>
+                </div>
+                
+
+                
+                <div class="row">
+                  <div class="col s12 center">
+                    <button class="btn waves-effect waves-light grey darken-2" type="submit" name="submit"></i>Inserir <i class="material-icons">send</i></button>
+                  </div>
+                </div>
                 <?php
-                  $dao = new DaoUsuario();
-                  $resultado = $dao->getAll();
-                  if($resultado != NULL){
-                    foreach ($resultado as $key => $value) {
-                      echo "<tr>";
-                        echo "<td>{$value->getId_Usuario()}</td>";
-                          echo "<td>{$value->getNome()}</td>";
-                          echo "<td>{$value->getSobrenome()}</td>";
-                          echo "<td>{$value->getEmail()}</td>";
-                          echo "<td>{$value->getSenha()}</td>";
-                          //echo "<td>{$value->getAdministrador()}</td>";
-                          if($value->getAdministrador() == 1 ){
-                            echo "<td>Administrador</td>";
-                          }else{
-                            echo "<td>Vendedor</td>";
-                          }
-                          echo "<td><a href='usuarioalterar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>update</i> </a> </td>";
-                          echo "<td><a href='usuariodeletar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>delete</i> </a> </td>";
-                        echo "</tr>";
+                  if (isset($_POST['submit'])) {
+                    $data = date('Y-m-d h:i:s');
+                    $vendas = new Vendas();
+                    $vendas->setCliente_Id_Cliente($_POST['cliente']);
+                    $vendas->setData($data);
+
+
+                    $dao =new DaoVendas();
+                    $id_retorno = $dao->save($vendas);
+
+                    $_SESSION['id_venda'] = $id_retorno; 
+
+                    
+                    if( $id_retorno > 0 ){
+                      echo "<script> window.location.href='admitensvendascad.php'  </script>";
                     }
                   }
                 ?>
-              </tbody>
-              </table>
+              </form>
+
             </div>
           </div>
-
           <!-- page -->
         </div>
-      </div>
-      <div class="fixed-action-btn">
-        <a href="usuariocadastro.php" class="btn-floating pulse btn-large waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -116,6 +129,7 @@
           $(".bton").sideNav({
             menuWidth: 250,
           });
+          $('select').material_select();
         })
       </script>
     </body>

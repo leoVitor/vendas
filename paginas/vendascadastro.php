@@ -94,7 +94,6 @@
                 <?php
                   if (isset($_POST['submit'])) {
                     $data = date('Y-m-d h:i:s');
-                    echo $data;
                     $vendas = new Vendas();
                     $vendas->setCliente_Id_Cliente($_POST['cliente']);
                     $vendas->setData($data);
