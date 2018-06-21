@@ -1,11 +1,22 @@
 terminados:
-produto (cadastro,consulta,deleta,altera)
-estado (cadastro,consulta,deleta,altera)
-cidade (cadastro,consulta,deleta,altera)
-endereco (cadastro,consulta,deleta,altera)
-veiculo (cadastro,consulta,deleta,altera)
-cliente (cadastro,consulta,deleta) - erro alterar sintaxe
-venda (cadastro,consulta,daleta) - erro alterar sintaxe
-itensvenda (cadastro,consulta,deleta) - erro alterar sintaxe
-usuario (cadastro,consulta,deleta)
+//produto (cadastro,consulta,deleta,altera)
+//estado (cadastro,consulta,deleta,altera)
+//endereco (cadastro,consulta,deleta,altera)
+//veiculo (cadastro,consulta,deleta,altera)
+//cliente (cadastro,consulta,deleta)
+//venda (cadastro,consulta,daleta)
+//usuario (cadastro,consulta,deleta)
+//cidade (cadastro,consulta,deleta,altera)
+itensvenda (cadastro,consulta,deleta)
+
+
+layout:
+usuario (concluida)
+produto (concluida)
+cleinte (falta altera)
+venda (concluida)
+endereco (concluida)
+veiculo (concluida)
+entado (concluida)
+cidade (concluida)
 

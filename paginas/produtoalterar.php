@@ -38,15 +38,21 @@
                 </div>
               </li>
 
-              <li><div class="divider"></div></li>
-              <li class=" grey darken-1 active"><a class="waves-effect" href="admprodutoconsulta.php"><i class="material-icons">home</i>Início</a></li>
-              <li><div class="divider"></div></li>
-              <li><a href="usuarioconsulta.php"><i class="material-icons">people</i>Usuarios</a></li>
-              <li><div class="divider"></div></li>
+              <li><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
+              
+              <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
+              
+              <li><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
+              
+              <li><a href="cidadeconsulta.php"><i class="material-icons">location_city</i>Cidade</a></li>
+              
+              <li><a href="veiculoconsulta.php"><i class="material-icons">directions_car</i>Veiculo</a></li>
+              
               <li><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
-              <li><div class="divider"></div></li>
+              
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
-              <li><div class="divider"></div></li>
+              
+              <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
             </ul>
           </div>
         </div>
