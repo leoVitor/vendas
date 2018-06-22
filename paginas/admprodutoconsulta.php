@@ -32,7 +32,7 @@
                 </div>
               </li>
 
-              <li><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
+              <li class="active grey darken-1"><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
               
               <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
               

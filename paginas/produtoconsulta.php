@@ -37,6 +37,7 @@
               
               <li><a href="vendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
              
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,9 @@
     session_start();
     require_once "../dao/daousuario.class.php";
     require_once "../class/usuario.class.php";
+    if(!isset($_SESSION['email'])){
+      echo "<script>window.location.href='index.php'</script>";
+    }
 ?>
   <!DOCTYPE html>
   <html>
@@ -73,7 +76,7 @@
                         else{
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['nome'] = $resultado->getNome() . " " . $resultado->getSobrenome();
-                            echo "<script> window.location.href='produtoconsulta.php'</script>";
+                            echo "<script> window.location.href='vendascadastro.php'</script>";
                         }
                     }
                     else{

@@ -43,7 +43,7 @@
               
               <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
               
-              <li><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
+              <li class="active grey darken-1"><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
               
               <li><a href="cidadeconsulta.php"><i class="material-icons">location_city</i>Cidade</a></li>
               
@@ -54,6 +54,7 @@
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>
@@ -88,7 +89,7 @@
                 </div>
                 <div class="row">
                   <div class="col s12 center">
-                    <button id="submit" class="btn waves-effect waves-light" type="submit" name="submit"></i>Alterar</button>
+                    <button id="submit" class="btn waves-effect waves-light grey darken-2" type="submit" name="submit"></i>Alterar</button>
                   </div>
                 </div>
                 <?php

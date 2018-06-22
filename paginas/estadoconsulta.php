@@ -37,7 +37,7 @@
               
               <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
               
-              <li><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
+              <li class="active grey darken-1"><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
               
               <li><a href="cidadeconsulta.php"><i class="material-icons">location_city</i>Cidade</a></li>
               
@@ -48,6 +48,7 @@
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>
@@ -70,7 +71,6 @@
               <table>
                 <thead>
                   <tr>
-                    <th>Código</th>
                     <th>Nome</th>
                     <th>UF</th>
                     <th>Alterar</th>
@@ -85,7 +85,6 @@
                     if($resultado != NULL){
                         foreach ($resultado as $key => $value) {
                             echo "<tr>";
-                            echo "<td>{$value->getId_estado()}</td>";
                             echo "<td>{$value->getNome()}</td>";
                             echo "<td>{$value->getUf()}</td>";
                             echo "<td><a href='estadoalterar.php?id_estado={$value->getId_estado()}'><i class='material-icons'>update</i> </a> </td>";

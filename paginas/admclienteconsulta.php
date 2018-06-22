@@ -6,6 +6,9 @@
   require_once "../class/endereco.class.php";
   require_once "../dao/daoveiculo.class.php";
   require_once "../class/veiculo.class.php";
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
 ?>
   <!DOCTYPE html>
   <html>
@@ -46,11 +49,13 @@
               
               <li><a href="veiculoconsulta.php"><i class="material-icons">directions_car</i>Veiculo</a></li>
               
-              <li><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
+              <li class="active grey darken-1"><a href="admclienteconsulta.php"><i class="material-icons">people</i>Clientes</a></li>
               
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
+            
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>

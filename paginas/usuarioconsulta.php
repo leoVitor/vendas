@@ -34,7 +34,7 @@
 
               <li><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
               
-              <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
+              <li class="active grey darken-1"><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
               
               <li><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
               
@@ -47,6 +47,7 @@
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>
@@ -70,7 +71,6 @@
                   <tr>
                     <th>Código</th>
                     <th>Nome</th>
-                    <th>Sobrenome</th>
                     <th>Email</th>
                     <th>Senha</th>
                     <th>Tipo de Usuario</th>
@@ -87,14 +87,13 @@
                     foreach ($resultado as $key => $value) {
                       echo "<tr>";
                         echo "<td>{$value->getId_Usuario()}</td>";
-                          echo "<td>{$value->getNome()}</td>";
-                          echo "<td>{$value->getSobrenome()}</td>";
+                          echo "<td>{$value->getNome()} {$value->getSobrenome()}</td>";
                           echo "<td>{$value->getEmail()}</td>";
                           echo "<td>{$value->getSenha()}</td>";
                           //echo "<td>{$value->getAdministrador()}</td>";
                           if($value->getAdministrador() == 1 ){
                             echo "<td>Administrador</td>";
-                          }else{
+                          }if($value->getAdministrador() != 1 ){
                             echo "<td>Vendedor</td>";
                           }
                           echo "<td><a href='usuarioalterar.php?id_usuario={$value->getId_Usuario()}'><i class='material-icons'>update</i> </a> </td>";

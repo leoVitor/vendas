@@ -36,7 +36,7 @@
 
               <li><a href="admprodutoconsulta.php"><i class="material-icons">shopping_basket</i>Produto</a></li>
               
-              <li><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
+              <li class="active grey darken-1"><a href="usuarioconsulta.php"><i class="material-icons">face</i>Usuarios</a></li>
               
               <li><a href="estadoconsulta.php"><i class="material-icons">public</i>Estado</a></li>
               
@@ -49,6 +49,7 @@
               <li><a href="admvendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
+              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>

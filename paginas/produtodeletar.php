@@ -6,6 +6,6 @@
        $id = $_GET['id_produto'];
        $dao = new DaoProduto();
        $estado = $dao->delete($id);
-       echo "<script> alert('excluído com sucesso'); window.location.href='produtoconsulta.php';</script>";
+       echo "<script> alert('Excluído com sucesso'); window.location.href='admprodutoconsulta.php';</script>";
    }
 ?>

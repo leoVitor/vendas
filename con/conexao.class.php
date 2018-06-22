@@ -2,7 +2,7 @@
     class Conexao{
         private $servername="localhost";
         private $username="root";
-        private $password="freestep";
+        private $password="24131516";
         private $database="mydb";
 
         public function connection(){
