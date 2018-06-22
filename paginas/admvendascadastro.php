@@ -3,6 +3,10 @@
   require_once "../class/vendas.class.php";
   require_once "../dao/daocliente.class.php";
   require_once "../class/cliente.class.php";
+  
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
 
   session_start();
 ?>

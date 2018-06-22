@@ -2,6 +2,10 @@
     session_start();
     require_once "../dao/daousuario.class.php";
     require_once "../class/usuario.class.php";
+  
+    if(!isset($_SESSION['email'])){
+      echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+    }
 ?>
 <!DOCTYPE html>
   <html>

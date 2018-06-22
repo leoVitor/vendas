@@ -1,10 +1,15 @@
 <?php
+session_start();
   require_once "../dao/daocliente.class.php";
   require_once "../class/cliente.class.php";
   require_once "../dao/daoendereco.class.php";
   require_once "../class/endereco.class.php";
   require_once "../dao/daoveiculo.class.php";
   require_once "../class/veiculo.class.php";
+  
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
 
   $cliente = NULL;
   if(isset($_GET["id_cliente"])){

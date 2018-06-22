@@ -8,6 +8,10 @@
 
   session_start();
   
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
+  
 ?>
   <!DOCTYPE html>
   <html>

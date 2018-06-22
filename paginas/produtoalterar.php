@@ -2,6 +2,11 @@
   session_start();
   require_once "../dao/daoproduto.class.php";
   require_once "../class/produto.class.php";
+  
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
+  
   $produto = NULL;
    if(isset($_GET["id_produto"])){
        $id = $_GET["id_produto"];

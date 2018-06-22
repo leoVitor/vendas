@@ -1,6 +1,11 @@
 <?php
+    session_start();
     require_once "../class/veiculo.class.php";
     require_once "../dao/daoveiculo.class.php";
+  
+    if(!isset($_SESSION['email'])){
+      echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+    }
   
     $veiculo = NULL;
     if(isset($_GET["id_veiculo"])){
@@ -8,7 +13,6 @@
         $dao = new DaoVeiculo();
         $veiculo = $dao->busca($id);
     }
-    session_start();
   ?>
   <!DOCTYPE html>
   <html>

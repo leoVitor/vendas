@@ -2,9 +2,7 @@
     session_start();
     require_once "../dao/daousuario.class.php";
     require_once "../class/usuario.class.php";
-    if(!isset($_SESSION['email'])){
-      echo "<script>window.location.href='index.php'</script>";
-    }
+    
 ?>
   <!DOCTYPE html>
   <html>

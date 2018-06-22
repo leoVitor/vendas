@@ -1,13 +1,17 @@
 <?php
+    session_start();
     require_once "../class/estado.class.php";
     require_once "../dao/daoestado.class.php";
+  
+    if(!isset($_SESSION['email'])){
+      echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+    }
     $estado = NULL;
     if(isset($_GET['id_estado'])){
         $id = $_GET['id_estado'];
         $dao = new DaoEstado();
         $estado = $dao->pesquisarEstado($id);
     }
-      session_start();
   ?>
   <!DOCTYPE html>
   <html>

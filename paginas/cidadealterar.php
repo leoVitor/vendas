@@ -1,8 +1,13 @@
 <?php
+ session_start();
   require_once "../dao/daocidade.class.php";
   require_once "../class/cidade.class.php";
   require_once "../dao/daoestado.class.php";
   require_once "../class/estado.class.php";
+  
+  if(!isset($_SESSION['email'])){
+    echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
+  }
 
   $cidade = NULL;
    if(isset($_GET["id_cidade"])){
@@ -10,7 +15,7 @@
        $dao = new DaoCidade();
        $cidade = $dao->buscar($id);
    }
-   session_start();
+  
 ?>
   <!DOCTYPE html>
   <html>
