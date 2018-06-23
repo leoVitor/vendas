@@ -57,7 +57,7 @@
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
               
-              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
+              <li><a href="sair.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>

@@ -3,12 +3,11 @@
   require_once "../class/vendas.class.php";
   require_once "../dao/daocliente.class.php";
   require_once "../class/cliente.class.php";
+  session_start();
   
   if(!isset($_SESSION['email'])){
     echo "<script>alert('Por Favor Faça Login em nosso sistema');window.location.href='http://localhost/vendas/paginas/'</script>";
   }
-
-  session_start();
 ?>
   <!DOCTYPE html>
   <html>
@@ -55,7 +54,7 @@
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
               
-              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
+              <li><a href="sair.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>

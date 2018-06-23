@@ -23,6 +23,20 @@
     </head>
 
     <body>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+          });
+        })
+      </script>
       <div class="wrapper ">
         <!-- sidebar -->
         <div class="sidebar ">
@@ -55,7 +69,7 @@
               
               <li><a href="enderecocadastro.php"><i class="material-icons">location_on</i>Endereço</a></li>
             
-              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
+              <li><a href="sair.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>
@@ -78,7 +92,7 @@
               
             <div class="row" >
             <div class="col s12" >
-            <table>
+            <table class="striped highlight">
                 <thead>
                   <tr>
                     <th>Nome</th>
@@ -87,8 +101,8 @@
                     <th>RG</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Endereço</th>
-                    <th>Veículo</th>
+                    <th>Alterar</th>
+                    <th>Deletar</th>
                   </tr>
                 </thead>
 
@@ -98,6 +112,11 @@
                   $resultado = $dao->getAll();
                   if($resultado != NULL){
                     foreach ($resultado as $key => $value) {
+                        echo "<ul id='alt-del' class='dropdown-content'>
+                              <li><a href='admclientealtera.php?Id_cliente={$value->getId_Cliente()}'><i class='material-icons'>update</i></a></li>
+                              <li><a href=''><i class='material-icons'>delete</i> </a></li>
+                            </ul>";
+
                         echo "<tr>";
                         
                             $nascimento = date('d-m-Y', strtotime($value->getNascimento() ));
@@ -107,8 +126,8 @@
                             echo "<td>{$value->getRg()}</td>";
                             echo "<td>{$value->getTelefone()}</td>";
                             echo "<td>{$value->getEmail()}</td>";
-                            echo "<td>{$value->getEndereco_Id_Endereco()}</td>";
-                            echo "<td>{$value->getVeiculo_Id_Veiculo()}</td>";
+                            echo "<td><a href='admclientealtera.php?id_cliente={$value->getId_cliente()}'><i class='material-icons'>update</i></a></td>";
+                            echo "<td><a href='clientedeletar.php?id_cliente={$value->getId_cliente()}'><i class='material-icons'>delete</i></a></td>";
                         echo "</tr>";
                     }
                   }

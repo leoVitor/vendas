@@ -45,7 +45,7 @@
               
               <li><a href="vendascadastro.php"><i class="material-icons">local_grocery_store</i>Venda</a></li>
              
-              <li><a href="index.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
+              <li><a href="sair.php"><i class="material-icons">exit_to_app</i>Deslogar</a></li>
             </ul>
           </div>
         </div>
@@ -68,7 +68,7 @@
               
             <div class="row" >
             <div class="col s12" >
-            <table>
+            <table class="striped highlight">
                 <thead>
                   <tr>
                     <th>Nome</th>
@@ -79,6 +79,7 @@
                     <th>Email</th>
                     <th>Endereço</th>
                     <th>Veículo</th>
+                    <th>Alterar</th>
                   </tr>
                 </thead>
 
@@ -99,6 +100,7 @@
                             echo "<td>{$value->getEmail()}</td>";
                             echo "<td>{$value->getEndereco_Id_Endereco()}</td>";
                             echo "<td>{$value->getVeiculo_Id_Veiculo()}</td>";
+                            echo "<td><a href='clientealterar.php?id_cliente={$value->getId_Cliente()}'><i class='material-icons'>update</i></td>";
                         echo "</tr>";
                     }
                   }
@@ -113,8 +115,14 @@
           <!-- page -->
         </div>
       </div>]
-      <div class="fixed-action-btn">
-        <a href="clientecadastro.php" class="btn-floating pulse btn-large waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
+      <div class="fixed-action-btn horizontal click-to-toggle">
+        <a class="btn-floating btn-large grey darken-3">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating grey darken-1" href="Venderecocadastro.php"><i class="material-icons">location_on</i></a></li>
+          <li><a class="btn-floating grey darken-2" href="Vclientecadastro.php"><i class="material-icons">people</i></a></li>
+        </ul>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
